@@ -6,9 +6,6 @@ export async function lookupDiscordUser(client: Client, username: string) {
     const guild = await client.guilds.fetch(guildId);
     const cleanName = username.replace(/^@/, '').toLowerCase().trim();
 
-    // Fetch all members
-    await guild.members.fetch();
-
     const member = guild.members.cache.find(m =>
       m.user.username.toLowerCase() === cleanName ||
       m.displayName.toLowerCase() === cleanName ||
