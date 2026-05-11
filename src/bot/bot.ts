@@ -17,8 +17,18 @@ export const discordClient = new Client({
   partials: [Partials.Channel, Partials.Message],
 });
 
-discordClient.once('ready', () => {
+discordClient.once('ready', async () => {
   console.log(`[Discord] Бот запущен как ${discordClient.user?.tag}`);
+  const guildId = process.env.DISCORD_GUILD_ID;
+  if (guildId) {
+    try {
+      const guild = await discordClient.guilds.fetch(guildId);
+      await guild.members.fetch();
+      console.log(`[Discord] Кэш участников загружен: ${guild.members.cache.size} участников`);
+    } catch (err) {
+      console.error('[Discord] Ошибка загрузки кэша участников:', err);
+    }
+  }
 });
 
 // Фильтр сообщений
