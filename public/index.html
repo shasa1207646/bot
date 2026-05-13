@@ -5,124 +5,265 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GameVerse — Игровой сервер</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600&family=Cinzel+Decorative:wght@400;700&family=Nunito:wght@400;600;700&family=Exo+2:wght@400;600;700&family=Share+Tech+Mono&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Nunito:wght@400;600;700;800&family=Exo+2:wght@400;600;700;800&family=Share+Tech+Mono&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
-   ТЕМЫ
+   ТЕМЫ — 7 штук
 ═══════════════════════════════════════ */
+
+/* 1. Игровая (зелёно-фиолетовая) */
 [data-theme="gaming"] {
   --primary: #00ff88;
   --primary-dim: #00cc6a;
-  --bg: #0a0a0f;
-  --surface: #12121a;
-  --surface2: #1a1a26;
-  --border: #2a2a3a;
+  --primary-glow: rgba(0,255,136,0.35);
+  --bg: #060610;
+  --bg2: #0a0a18;
+  --surface: #111120;
+  --surface2: #181828;
+  --border: #252538;
   --accent: #7c3aed;
   --accent2: #a855f7;
   --text: #e2e8f0;
-  --text-muted: #8892a0;
-  --danger: #ff4444;
+  --text-muted: #7080a0;
+  --danger: #ff3355;
   --success: #00ff88;
+  --warn: #ffaa00;
   --font-title: 'Orbitron', sans-serif;
   --font-body: 'Rajdhani', sans-serif;
-  --glow: 0 0 20px rgba(0,255,136,0.3);
-  --glow-accent: 0 0 20px rgba(124,58,237,0.4);
+  --radius: 10px;
+  --glow: 0 0 24px rgba(0,255,136,0.4), 0 0 48px rgba(0,255,136,0.15);
+  --glow-accent: 0 0 24px rgba(124,58,237,0.5);
+  --bg-pattern: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,255,136,0.03) 39px, rgba(0,255,136,0.03) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,255,136,0.03) 39px, rgba(0,255,136,0.03) 40px);
 }
+
+/* 2. Аниме */
 [data-theme="anime"] {
   --primary: #ff6b9d;
   --primary-dim: #cc4477;
-  --bg: #0d0a1a;
-  --surface: #1a1025;
-  --surface2: #22153a;
-  --border: #3a2050;
-  --accent: #a855f7;
-  --accent2: #c084fc;
+  --primary-glow: rgba(255,107,157,0.4);
+  --bg: #0d0816;
+  --bg2: #120d1e;
+  --surface: #1a1228;
+  --surface2: #221838;
+  --border: #352050;
+  --accent: #c084fc;
+  --accent2: #e879f9;
   --text: #fce4f8;
-  --text-muted: #a87ab0;
+  --text-muted: #a07ab0;
   --danger: #ff4488;
   --success: #88ffcc;
+  --warn: #ffdd88;
   --font-title: 'Cinzel Decorative', cursive;
   --font-body: 'Nunito', sans-serif;
-  --glow: 0 0 20px rgba(255,107,157,0.4);
-  --glow-accent: 0 0 20px rgba(168,85,247,0.4);
+  --radius: 14px;
+  --glow: 0 0 24px rgba(255,107,157,0.5), 0 0 60px rgba(255,107,157,0.1);
+  --glow-accent: 0 0 24px rgba(192,132,252,0.5);
+  --bg-pattern: radial-gradient(circle at 20% 50%, rgba(255,107,157,0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(192,132,252,0.04) 0%, transparent 50%);
 }
+
+/* 3. Sci-Fi (синий неон) */
 [data-theme="scifi"] {
   --primary: #00d4ff;
   --primary-dim: #0099cc;
-  --bg: #030810;
-  --surface: #071224;
-  --surface2: #0d1f3c;
-  --border: #1a3060;
+  --primary-glow: rgba(0,212,255,0.4);
+  --bg: #020810;
+  --bg2: #040e1a;
+  --surface: #071525;
+  --surface2: #0d2040;
+  --border: #1a3560;
   --accent: #0066ff;
   --accent2: #4499ff;
   --text: #cce8ff;
-  --text-muted: #6090bb;
+  --text-muted: #5588aa;
   --danger: #ff3366;
   --success: #00ffcc;
+  --warn: #ffcc00;
   --font-title: 'Exo 2', sans-serif;
   --font-body: 'Share Tech Mono', monospace;
-  --glow: 0 0 20px rgba(0,212,255,0.4);
-  --glow-accent: 0 0 20px rgba(0,102,255,0.4);
+  --radius: 4px;
+  --glow: 0 0 24px rgba(0,212,255,0.5), 0 0 60px rgba(0,212,255,0.15);
+  --glow-accent: 0 0 24px rgba(0,102,255,0.5);
+  --bg-pattern: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(0,212,255,0.02) 79px, rgba(0,212,255,0.02) 80px);
 }
-[data-theme="minimal"] {
-  --primary: #6366f1;
-  --primary-dim: #4f46e5;
-  --bg: #09090b;
-  --surface: #18181b;
-  --surface2: #27272a;
-  --border: #3f3f46;
-  --accent: #8b5cf6;
-  --accent2: #a78bfa;
-  --text: #fafafa;
-  --text-muted: #71717a;
-  --danger: #ef4444;
-  --success: #22c55e;
-  --font-title: 'DM Sans', sans-serif;
+
+/* 4. Закат (оранжево-красный) */
+[data-theme="sunset"] {
+  --primary: #ff7b2c;
+  --primary-dim: #e05a10;
+  --primary-glow: rgba(255,123,44,0.4);
+  --bg: #0e0600;
+  --bg2: #160a00;
+  --surface: #1e0e00;
+  --surface2: #2a1400;
+  --border: #3d2000;
+  --accent: #ff3366;
+  --accent2: #ff6688;
+  --text: #ffe8cc;
+  --text-muted: #996644;
+  --danger: #ff1144;
+  --success: #88ff66;
+  --warn: #ffdd00;
+  --font-title: 'Bebas Neue', cursive;
+  --font-body: 'Space Grotesk', sans-serif;
+  --radius: 8px;
+  --glow: 0 0 24px rgba(255,123,44,0.5), 0 0 60px rgba(255,60,0,0.15);
+  --glow-accent: 0 0 24px rgba(255,51,102,0.5);
+  --bg-pattern: radial-gradient(ellipse at top, rgba(255,100,0,0.07) 0%, transparent 60%);
+}
+
+/* 5. Природа (зелёная) */
+[data-theme="nature"] {
+  --primary: #4ade80;
+  --primary-dim: #22c55e;
+  --primary-glow: rgba(74,222,128,0.35);
+  --bg: #030b04;
+  --bg2: #060f07;
+  --surface: #0d1f10;
+  --surface2: #152817;
+  --border: #1e3a22;
+  --accent: #22d3ee;
+  --accent2: #67e8f9;
+  --text: #dcfce7;
+  --text-muted: #4a7a50;
+  --danger: #f87171;
+  --success: #4ade80;
+  --warn: #fbbf24;
+  --font-title: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
-  --glow: 0 0 15px rgba(99,102,241,0.3);
-  --glow-accent: 0 0 15px rgba(139,92,246,0.3);
+  --radius: 16px;
+  --glow: 0 0 24px rgba(74,222,128,0.4), 0 0 60px rgba(34,197,94,0.1);
+  --glow-accent: 0 0 24px rgba(34,211,238,0.4);
+  --bg-pattern: radial-gradient(circle at 10% 90%, rgba(74,222,128,0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(34,211,238,0.05) 0%, transparent 40%);
+}
+
+/* 6. ЧЁРНАЯ (pure black) */
+[data-theme="black"] {
+  --primary: #ffffff;
+  --primary-dim: #cccccc;
+  --primary-glow: rgba(255,255,255,0.15);
+  --bg: #000000;
+  --bg2: #050505;
+  --surface: #0a0a0a;
+  --surface2: #111111;
+  --border: #222222;
+  --accent: #ffffff;
+  --accent2: #aaaaaa;
+  --text: #ffffff;
+  --text-muted: #555555;
+  --danger: #ff3333;
+  --success: #33ff33;
+  --warn: #ffcc00;
+  --font-title: 'Bebas Neue', cursive;
+  --font-body: 'Space Grotesk', sans-serif;
+  --radius: 0px;
+  --glow: 0 0 20px rgba(255,255,255,0.1);
+  --glow-accent: 0 0 20px rgba(255,255,255,0.05);
+  --bg-pattern: none;
+}
+
+/* 7. БЕЛАЯ (pure light) */
+[data-theme="white"] {
+  --primary: #111111;
+  --primary-dim: #333333;
+  --primary-glow: rgba(0,0,0,0.08);
+  --bg: #f8f8f8;
+  --bg2: #f0f0f0;
+  --surface: #ffffff;
+  --surface2: #f4f4f4;
+  --border: #e0e0e0;
+  --accent: #2563eb;
+  --accent2: #60a5fa;
+  --text: #111111;
+  --text-muted: #888888;
+  --danger: #dc2626;
+  --success: #16a34a;
+  --warn: #d97706;
+  --font-title: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius: 12px;
+  --glow: 0 4px 24px rgba(0,0,0,0.08);
+  --glow-accent: 0 4px 24px rgba(37,99,235,0.15);
+  --bg-pattern: none;
 }
 
 /* ═══════════════════════════════════════
-   BASE
+   RESET & BASE
 ═══════════════════════════════════════ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+:root { scroll-behavior: smooth; }
+
 body {
   background: var(--bg);
+  background-image: var(--bg-pattern);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.4s, color 0.4s;
+  overflow-x: hidden;
 }
 
-/* Фоновая сетка */
-body::before {
+/* Анимированный фон для тёмных тем */
+[data-theme="gaming"] body::after,
+[data-theme="scifi"] body::after,
+[data-theme="anime"] body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background: var(--bg-pattern);
   pointer-events: none;
   z-index: 0;
 }
 
-.container { max-width: 900px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+/* Floating orbs */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+[data-theme="white"] .orb,
+[data-theme="black"] .orb { opacity: 0; }
+.orb:nth-child(1) { width: 500px; height: 500px; background: var(--primary); top: -10%; left: -10%; animation-duration: 25s; }
+.orb:nth-child(2) { width: 400px; height: 400px; background: var(--accent); top: 50%; right: -10%; animation-duration: 30s; animation-delay: -10s; }
+.orb:nth-child(3) { width: 300px; height: 300px; background: var(--primary); bottom: -10%; left: 40%; animation-duration: 20s; animation-delay: -5s; }
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.1); }
+  66% { transform: translate(-20px, 30px) scale(0.9); }
+}
+
+.container { max-width: 940px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
 
 /* ─── HEADER ─── */
 header {
-  background: var(--surface);
+  background: rgba(var(--bg-rgb, 6,6,16), 0.85);
+  background-color: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 16px 0;
+  padding: 14px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
+  z-index: 200;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s;
 }
+[data-theme="white"] header { background: rgba(255,255,255,0.92); }
+[data-theme="black"] header { background: rgba(0,0,0,0.92); }
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -130,48 +271,84 @@ header {
   gap: 16px;
   flex-wrap: wrap;
 }
+
 .logo {
   font-family: var(--font-title);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 900;
   color: var(--primary);
-  text-shadow: var(--glow);
-  letter-spacing: 2px;
   text-decoration: none;
+  letter-spacing: 3px;
+  text-shadow: var(--glow);
+  position: relative;
+  display: inline-block;
 }
+.logo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 2px;
+  background: var(--primary);
+  box-shadow: var(--glow);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: left;
+}
+.logo:hover::after { transform: scaleX(1); }
 .logo span { color: var(--accent2); }
 
-/* Переключатель тем */
+/* Темы */
 .themes {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   align-items: center;
+  flex-wrap: wrap;
 }
-.theme-label { font-size: 0.75rem; color: var(--text-muted); margin-right: 4px; }
+.theme-label { font-size: 0.72rem; color: var(--text-muted); margin-right: 4px; text-transform: uppercase; letter-spacing: 1px; }
 .theme-btn {
-  width: 28px; height: 28px;
+  width: 26px; height: 26px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
+  overflow: hidden;
 }
-.theme-btn:hover, .theme-btn.active { border-color: var(--text); transform: scale(1.15); }
-.theme-btn[data-t="gaming"] { background: linear-gradient(135deg, #00ff88, #7c3aed); }
-.theme-btn[data-t="anime"]  { background: linear-gradient(135deg, #ff6b9d, #a855f7); }
-.theme-btn[data-t="scifi"]  { background: linear-gradient(135deg, #00d4ff, #0066ff); }
-.theme-btn[data-t="minimal"]{ background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.theme-btn::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.theme-btn.active::after { opacity: 1; }
+.theme-btn:hover { transform: scale(1.2); border-color: var(--text); }
+.theme-btn.active { border-color: var(--primary); transform: scale(1.15); box-shadow: 0 0 10px var(--primary-glow); }
+.theme-btn[data-t="gaming"]  { background: linear-gradient(135deg, #00ff88, #7c3aed); }
+.theme-btn[data-t="anime"]   { background: linear-gradient(135deg, #ff6b9d, #c084fc); }
+.theme-btn[data-t="scifi"]   { background: linear-gradient(135deg, #00d4ff, #0066ff); }
+.theme-btn[data-t="sunset"]  { background: linear-gradient(135deg, #ff7b2c, #ff3366); }
+.theme-btn[data-t="nature"]  { background: linear-gradient(135deg, #4ade80, #22d3ee); }
+.theme-btn[data-t="black"]   { background: #000; border-color: #333; }
+.theme-btn[data-t="white"]   { background: #fff; border-color: #ccc; }
+.theme-btn[data-t="white"]::after { color: #333; }
 
 /* ─── NAV ─── */
 nav {
   background: var(--surface2);
   border-bottom: 1px solid var(--border);
   overflow-x: auto;
+  scrollbar-width: none;
 }
+nav::-webkit-scrollbar { display: none; }
 .nav-list {
   display: flex;
   list-style: none;
-  padding: 0;
   min-width: max-content;
 }
 .nav-btn {
@@ -179,35 +356,200 @@ nav {
   border: none;
   color: var(--text-muted);
   font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 14px 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 13px 18px;
   cursor: pointer;
   transition: all 0.2s;
-  border-bottom: 3px solid transparent;
+  border-bottom: 2px solid transparent;
   white-space: nowrap;
   letter-spacing: 0.5px;
+  position: relative;
 }
-.nav-btn:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-.nav-btn.active { color: var(--primary); border-bottom-color: var(--primary); text-shadow: var(--glow); }
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 2px;
+  background: var(--primary);
+  transition: all 0.3s;
+  box-shadow: var(--glow);
+}
+.nav-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.nav-btn.active { color: var(--primary); }
+.nav-btn.active::before { left: 0; right: 0; }
 
 /* ─── MAIN ─── */
-main { padding: 40px 0 80px; }
-
-.tab { display: none; }
+main { padding: 40px 0 100px; }
+.tab { display: none; animation: tabIn 0.35s cubic-bezier(0.34,1.56,0.64,1); }
 .tab.active { display: block; }
+
+@keyframes tabIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── HERO ─── */
+.hero {
+  text-align: center;
+  padding: 50px 0 30px;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  animation: fadeUp 0.5s both;
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  color: var(--primary);
+  text-shadow: var(--glow);
+  line-height: 1.05;
+  margin-bottom: 20px;
+  animation: fadeUp 0.5s 0.1s both;
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title .glitch {
+  position: relative;
+}
+.hero-title .glitch::before,
+.hero-title .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero-title .glitch::before {
+  color: var(--accent2);
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  transform: translate(-2px, 0);
+  animation: glitch1 4s steps(1) infinite;
+  opacity: 0.6;
+}
+.hero-title .glitch::after {
+  color: var(--danger);
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  transform: translate(2px, 0);
+  animation: glitch2 4s steps(1) infinite;
+  opacity: 0.6;
+}
+@keyframes glitch1 {
+  0%,89%,100% { transform: translate(-2px,0); opacity: 0; }
+  90% { transform: translate(-4px, 1px); opacity: 0.6; }
+  92% { transform: translate(2px, -1px); opacity: 0.6; }
+  94% { transform: translate(0,0); opacity: 0; }
+}
+@keyframes glitch2 {
+  0%,91%,100% { transform: translate(2px,0); opacity: 0; }
+  91% { transform: translate(4px,-1px); opacity: 0.6; }
+  93% { transform: translate(-2px, 1px); opacity: 0.6; }
+  95% { transform: translate(0,0); opacity: 0; }
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto 28px;
+  animation: fadeUp 0.5s 0.2s both;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  animation: fadeUp 0.5s 0.3s both;
+}
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 7px 18px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.3s;
+}
+.stat-pill:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+.stat-pill .online-dot {
+  width: 7px; height: 7px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.5s 0.4s both;
+}
+
+/* ─── FEATURE GRID ─── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+  animation: fadeUp 0.5s 0.5s both;
+}
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 20px;
+  text-align: center;
+  cursor: default;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary-glow), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.feature-card:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 8px 32px var(--primary-glow); }
+.feature-card:hover::before { opacity: 0.07; }
+.feature-icon { font-size: 2.2rem; margin-bottom: 10px; }
+.feature-title { font-family: var(--font-title); color: var(--primary); margin-bottom: 6px; font-size: 0.95rem; }
+.feature-desc { color: var(--text-muted); font-size: 0.88rem; }
 
 /* ─── CARDS ─── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 20px;
+  transition: border-color 0.3s;
+  animation: fadeUp 0.4s both;
 }
+.card:hover { border-color: rgba(255,255,255,0.1); }
 .card-title {
   font-family: var(--font-title);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--primary);
   margin-bottom: 20px;
   display: flex;
@@ -215,16 +557,35 @@ main { padding: 40px 0 80px; }
   gap: 10px;
 }
 
+/* ─── SECTION TITLE ─── */
+.section-title {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-shadow: var(--glow);
+  animation: fadeUp 0.4s both;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+
 /* ─── FORMS ─── */
 .form-group { margin-bottom: 18px; }
 .form-group label {
   display: block;
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  margin-bottom: 6px;
+  margin-bottom: 7px;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 .form-group input,
 .form-group select,
@@ -232,70 +593,79 @@ main { padding: 40px 0 80px; }
   width: 100%;
   background: var(--surface2);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 0.95rem;
-  padding: 10px 14px;
+  padding: 11px 16px;
   transition: border-color 0.2s, box-shadow 0.2s;
   outline: none;
+  -webkit-appearance: none;
 }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(0,255,136,0.1);
+  box-shadow: 0 0 0 3px var(--primary-glow);
 }
-.form-group input::placeholder { color: var(--text-muted); }
-.form-group textarea { resize: vertical; min-height: 80px; }
-.form-group select option { background: var(--surface2); }
+.form-group input::placeholder { color: var(--text-muted); opacity: 0.6; }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select option { background: var(--surface2); color: var(--text); }
+[data-theme="white"] .form-group select option { background: #fff; color: #111; }
 
-/* Username с @ */
+.input-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.input-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) {
+  .input-grid-2, .input-grid-3 { grid-template-columns: 1fr; }
+}
+
 .username-wrap { position: relative; }
-.username-wrap .at-sign {
+.at-sign {
   position: absolute;
   left: 14px; top: 50%;
   transform: translateY(-50%);
   color: var(--primary);
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1rem;
+  pointer-events: none;
 }
-.username-wrap input { padding-left: 26px; }
+.username-wrap input { padding-left: 28px; }
 
-/* Статус проверки игрока */
+/* Discord check */
 .discord-check {
   margin-top: 10px;
   padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
   display: none;
+  transition: all 0.3s;
 }
 .discord-check.found {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(0,255,136,0.08);
+  background: rgba(0,255,136,0.07);
   border: 1px solid rgba(0,255,136,0.3);
   color: var(--success);
+  animation: fadeUp 0.3s;
 }
 .discord-check.not-found {
   display: block;
-  background: rgba(255,68,68,0.08);
-  border: 1px solid rgba(255,68,68,0.3);
+  background: rgba(255,51,85,0.07);
+  border: 1px solid rgba(255,51,85,0.3);
   color: var(--danger);
+  animation: fadeUp 0.3s;
 }
-.discord-check .avatar {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  border: 2px solid var(--primary);
+.discord-check.loading {
+  display: block;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
 }
+.discord-check .avatar { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--primary); }
 .discord-check .user-info { flex: 1; }
-.discord-check .user-info .uname { font-weight: 700; }
-.discord-check .roles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 4px;
-}
+.discord-check .uname { font-weight: 800; }
+.roles { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
 .role-badge {
   font-size: 0.7rem;
   padding: 2px 8px;
@@ -304,68 +674,104 @@ main { padding: 40px 0 80px; }
   border: 1px solid var(--border);
 }
 
-/* Кнопки */
+/* ─── BUTTONS ─── */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
-  border-radius: 8px;
+  padding: 12px 30px;
+  border-radius: var(--radius);
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   border: none;
   transition: all 0.2s;
   letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
 }
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.08);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn:hover::after { opacity: 1; }
+.btn:active { transform: scale(0.97); }
+
 .btn-primary {
   background: var(--primary);
   color: #000;
   box-shadow: var(--glow);
 }
-.btn-primary:hover { background: var(--primary-dim); transform: translateY(-1px); }
-.btn-primary:active { transform: translateY(0); }
+[data-theme="white"] .btn-primary { color: #fff; background: #111; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--glow), 0 8px 24px var(--primary-glow); }
+
 .btn-accent {
   background: var(--accent);
   color: #fff;
   box-shadow: var(--glow-accent);
 }
-.btn-accent:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-accent:hover { transform: translateY(-2px); box-shadow: var(--glow-accent), 0 8px 24px rgba(124,58,237,0.3); }
+
 .btn-outline {
   background: transparent;
   color: var(--primary);
-  border: 1px solid var(--primary);
+  border: 1.5px solid var(--primary);
 }
-.btn-outline:hover { background: rgba(0,255,136,0.1); }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+.btn-outline:hover { background: var(--primary-glow); transform: translateY(-2px); }
 
-/* Уведомления */
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none !important; box-shadow: none; }
+
+/* Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: scale(0);
+  animation: rippleAnim 0.5s linear;
+  pointer-events: none;
+}
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ─── ALERTS ─── */
 .alert {
   padding: 14px 18px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   margin-top: 16px;
   font-weight: 600;
   display: none;
+  animation: fadeUp 0.3s;
 }
-.alert.success { display: block; background: rgba(0,255,136,0.12); border: 1px solid var(--success); color: var(--success); }
-.alert.error { display: block; background: rgba(255,68,68,0.12); border: 1px solid var(--danger); color: var(--danger); }
-.alert.loading { display: block; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: var(--text-muted); }
+.alert.success { display: block; background: rgba(0,255,136,0.1); border: 1px solid var(--success); color: var(--success); }
+.alert.error   { display: block; background: rgba(255,51,85,0.1); border: 1px solid var(--danger); color: var(--danger); }
+.alert.loading { display: block; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-muted); }
 
 /* ─── AI CHAT ─── */
 .chat-window {
-  height: 380px;
+  height: 400px;
   overflow-y: auto;
   background: var(--surface2);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius);
   padding: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   scroll-behavior: smooth;
 }
+.chat-window::-webkit-scrollbar { width: 4px; }
+.chat-window::-webkit-scrollbar-track { background: transparent; }
+.chat-window::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
 .chat-msg {
   display: flex;
   gap: 10px;
@@ -373,35 +779,35 @@ main { padding: 40px 0 80px; }
 }
 .chat-msg.user { flex-direction: row-reverse; }
 .chat-avatar {
-  width: 34px; height: 34px;
+  width: 36px; height: 36px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
   flex-shrink: 0;
-  font-weight: 700;
+  font-weight: 800;
 }
 .chat-avatar.bot { background: var(--accent); color: #fff; }
 .chat-avatar.user { background: var(--primary); color: #000; }
+[data-theme="white"] .chat-avatar.user { color: #fff; background: #111; }
+
 .chat-bubble {
-  max-width: 75%;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  max-width: 76%;
+  padding: 11px 16px;
+  border-radius: var(--radius);
+  font-size: 0.92rem;
   line-height: 1.5;
 }
-.chat-msg.bot .chat-bubble { background: var(--surface); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
-.chat-msg.user .chat-bubble { background: var(--accent); color: #fff; border-bottom-right-radius: 4px; }
+.chat-msg.bot  .chat-bubble { background: var(--surface); border: 1px solid var(--border); border-bottom-left-radius: 2px; }
+.chat-msg.user .chat-bubble { background: var(--accent); color: #fff; border-bottom-right-radius: 2px; }
+
 .chat-typing {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 10px 14px;
+  padding: 11px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  border-bottom-left-radius: 4px;
+  border-radius: var(--radius);
   width: fit-content;
 }
 .dot {
@@ -413,66 +819,85 @@ main { padding: 40px 0 80px; }
 .dot:nth-child(2) { animation-delay: 0.2s; }
 .dot:nth-child(3) { animation-delay: 0.4s; }
 @keyframes bounce {
-  0%,60%,100% { transform: translateY(0); }
-  30% { transform: translateY(-6px); }
+  0%,60%,100% { transform: translateY(0); background: var(--text-muted); }
+  30% { transform: translateY(-7px); background: var(--primary); }
 }
 
-.chat-input-row {
-  display: flex;
-  gap: 10px;
-}
+.chat-input-row { display: flex; gap: 10px; }
 .chat-input-row input {
   flex: 1;
   background: var(--surface2);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 0.95rem;
-  padding: 10px 14px;
+  padding: 11px 16px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.chat-input-row input:focus { border-color: var(--primary); }
+.chat-input-row input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+
+/* Quick questions */
+.quick-qs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.quick-q {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.quick-q:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-glow); }
 
 /* ─── COMMANDS ─── */
-.cmd-grid {
-  display: grid;
-  gap: 12px;
-}
+.cmd-grid { display: grid; gap: 10px; }
 .cmd-card {
   background: var(--surface2);
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 20px;
-  transition: border-color 0.2s;
+  border-radius: var(--radius);
+  padding: 15px 20px;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: fadeUp 0.3s both;
 }
-.cmd-card:hover { border-color: var(--primary); }
+.cmd-card:hover { border-color: var(--primary); transform: translateX(4px); box-shadow: -4px 0 0 var(--primary); }
 .cmd-name {
   font-family: 'Share Tech Mono', monospace;
   color: var(--primary);
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  margin-bottom: 4px;
 }
-.cmd-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px; }
+.cmd-desc { color: var(--text-muted); font-size: 0.88rem; }
 .cmd-example {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--accent2);
   background: var(--bg);
-  padding: 4px 10px;
+  padding: 3px 10px;
   border-radius: 4px;
   display: inline-block;
+  margin-top: 2px;
 }
 
-/* ─── ABOUT / INFO ─── */
+/* ─── ABOUT ─── */
 .info-block {
   background: var(--surface2);
   border-left: 3px solid var(--primary);
   padding: 16px 20px;
   border-radius: 0 8px 8px 0;
   margin-bottom: 16px;
+  box-shadow: -3px 0 12px var(--primary-glow);
 }
 .steps { counter-reset: step; list-style: none; }
 .steps li {
@@ -480,7 +905,7 @@ main { padding: 40px 0 80px; }
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 12px 0;
+  padding: 13px 0;
   border-bottom: 1px solid var(--border);
 }
 .steps li:last-child { border-bottom: none; }
@@ -494,108 +919,56 @@ main { padding: 40px 0 80px; }
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 800;
   flex-shrink: 0;
   margin-top: 1px;
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
-/* Code block */
 .code-block {
   position: relative;
   background: #050508;
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 16px;
+  padding: 16px 40px 16px 16px;
   font-family: 'Share Tech Mono', monospace;
   font-size: 0.8rem;
-  color: #a8ff78;
+  color: #7aff78;
   overflow-x: auto;
   white-space: pre;
   line-height: 1.6;
 }
-.copy-btn {
-  position: absolute;
-  top: 10px; right: 10px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.copy-btn:hover { border-color: var(--primary); color: var(--primary); }
+[data-theme="white"] .code-block { background: #f0f0f0; color: #1a6a1a; border-color: #ccc; }
 
-/* ─── HERO ─── */
-.hero {
-  text-align: center;
-  padding: 40px 0 20px;
-}
-.hero-title {
-  font-family: var(--font-title);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
-  color: var(--primary);
-  text-shadow: var(--glow);
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-.hero-sub {
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  max-width: 500px;
-  margin: 0 auto 30px;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin: 0 4px;
-}
-.hero-badge .dot-online {
-  width: 8px; height: 8px;
-  background: var(--success);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Section title */
-.section-title {
-  font-family: var(--font-title);
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
+/* ─── ROLE CARDS ─── */
+.role-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
+  margin-bottom: 24px;
 }
-.section-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
+.role-info-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  transition: all 0.25s;
 }
+.role-info-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+.role-info-card .ri { font-size: 1.6rem; margin-bottom: 6px; }
+.role-info-card .rl { font-size: 0.82rem; color: var(--text-muted); }
+
+/* Helpers */
+.text-muted { color: var(--text-muted); font-size: 0.93rem; margin-bottom: 20px; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.divider { height: 1px; background: var(--border); margin: 24px 0; }
 
 /* Spinner */
 .spinner {
   display: inline-block;
-  width: 16px; height: 16px;
+  width: 15px; height: 15px;
   border: 2px solid rgba(255,255,255,0.2);
   border-top-color: currentColor;
   border-radius: 50%;
@@ -603,15 +976,90 @@ main { padding: 40px 0 80px; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Анимации */
+@keyframes pulse {
+  0%,100% { opacity: 1; box-shadow: 0 0 0 0 var(--primary-glow); }
+  50%      { opacity: 0.5; box-shadow: 0 0 0 4px transparent; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Shimmer loading text */
+.shimmer {
+  background: linear-gradient(90deg, var(--text-muted) 25%, var(--primary) 50%, var(--text-muted) 75%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* ─── TOAST ─── */
+#toast-container {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.toast {
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  max-width: 320px;
+  animation: toastIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.toast.success { background: var(--surface); border: 1px solid var(--success); color: var(--success); }
+.toast.error   { background: var(--surface); border: 1px solid var(--danger);  color: var(--danger);  }
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(40px) scale(0.9); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
   .header-inner { flex-direction: column; align-items: flex-start; }
   .card { padding: 18px; }
-  .chat-window { height: 280px; }
+  .chat-window { height: 300px; }
+  .hero-title { font-size: 2rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
 }
 </style>
 </head>
 <body>
+
+<!-- Floating bg orbs -->
+<div class="bg-orbs" aria-hidden="true">
+  <div class="orb"></div>
+  <div class="orb"></div>
+  <div class="orb"></div>
+</div>
 
 <!-- HEADER -->
 <header>
@@ -620,10 +1068,13 @@ main { padding: 40px 0 80px; }
       <a class="logo" href="#">Game<span>Verse</span></a>
       <div class="themes">
         <span class="theme-label">Тема:</span>
-        <button class="theme-btn active" data-t="gaming" title="Игровая" onclick="setTheme('gaming',this)"></button>
-        <button class="theme-btn" data-t="anime" title="Аниме" onclick="setTheme('anime',this)"></button>
-        <button class="theme-btn" data-t="scifi" title="Sci-Fi" onclick="setTheme('scifi',this)"></button>
-        <button class="theme-btn" data-t="minimal" title="Минимализм" onclick="setTheme('minimal',this)"></button>
+        <button class="theme-btn active" data-t="gaming" title="Игровая"  onclick="setTheme('gaming',this)"></button>
+        <button class="theme-btn"        data-t="anime"  title="Аниме"    onclick="setTheme('anime',this)"></button>
+        <button class="theme-btn"        data-t="scifi"  title="Sci-Fi"   onclick="setTheme('scifi',this)"></button>
+        <button class="theme-btn"        data-t="sunset" title="Закат"    onclick="setTheme('sunset',this)"></button>
+        <button class="theme-btn"        data-t="nature" title="Природа"  onclick="setTheme('nature',this)"></button>
+        <button class="theme-btn"        data-t="black"  title="Чёрная"   onclick="setTheme('black',this)"></button>
+        <button class="theme-btn"        data-t="white"  title="Белая"    onclick="setTheme('white',this)"></button>
       </div>
     </div>
   </div>
@@ -647,91 +1098,124 @@ main { padding: 40px 0 80px; }
 <main>
 <div class="container">
 
-<!-- ══════════ ГЛАВНАЯ ══════════ -->
+<!-- ══════════════ ГЛАВНАЯ ══════════════ -->
 <div id="tab-home" class="tab active">
   <div class="hero">
-    <div class="hero-title">GameVerse<br>Server</div>
-    <p class="hero-sub">Лучший игровой сервер для геймеров. Заходи, играй, общайся.</p>
-    <div>
-      <span class="hero-badge"><span class="dot-online"></span> Discord онлайн</span>
-      <span class="hero-badge"><span class="dot-online"></span> Telegram бот активен</span>
+    <p class="hero-eyebrow">Добро пожаловать в</p>
+    <h1 class="hero-title">
+      <span class="glitch" data-text="GameVerse">GameVerse</span><br>
+      <span style="color:var(--accent2);font-size:0.65em">Server</span>
+    </h1>
+    <p class="hero-sub">Лучшее игровое сообщество — для тех, кто живёт игрой. Заявки, модерация, AI-помощник — всё в одном месте.</p>
+    <div class="hero-stats">
+      <div class="stat-pill"><span class="online-dot"></span> Discord онлайн</div>
+      <div class="stat-pill"><span class="online-dot"></span> Telegram-бот активен</div>
+      <div class="stat-pill">🤖 AI работает 24/7</div>
     </div>
-    <br><br>
-    <button class="btn btn-primary" onclick="switchTab('apply', document.querySelector('.nav-btn:nth-child(2)'))">
-      🎮 Подать заявку
-    </button>
-    &nbsp;
-    <button class="btn btn-accent" onclick="switchTab('ai', document.querySelector('.nav-btn:nth-child(4)'))">
-      🤖 Спросить AI
-    </button>
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="switchTab('apply', document.querySelector('[data-tab=apply]'))">
+        🎮 Подать заявку
+      </button>
+      <button class="btn btn-accent" onclick="switchTab('ai', document.querySelector('[data-tab=ai]'))">
+        🤖 Спросить AI
+      </button>
+      <button class="btn btn-outline" onclick="switchTab('about', document.querySelector('[data-tab=about]'))">
+        📖 О сервере
+      </button>
+    </div>
   </div>
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px">
-    <div class="card" style="text-align:center">
-      <div style="font-size:2rem;margin-bottom:8px">🎮</div>
-      <div style="font-family:var(--font-title);color:var(--primary);margin-bottom:6px">Игровое сообщество</div>
-      <div style="color:var(--text-muted);font-size:0.9rem">Играем вместе, общаемся, организуем ивенты</div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎮</div>
+      <div class="feature-title">Игровое сообщество</div>
+      <div class="feature-desc">Ивенты, турниры, совместные сессии каждую неделю</div>
     </div>
-    <div class="card" style="text-align:center">
-      <div style="font-size:2rem;margin-bottom:8px">🛡️</div>
-      <div style="font-family:var(--font-title);color:var(--primary);margin-bottom:6px">Строгая модерация</div>
-      <div style="color:var(--text-muted);font-size:0.9rem">Заявки проверяют реальные модераторы в Discord и Telegram</div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <div class="feature-title">Строгая модерация</div>
+      <div class="feature-desc">Реальные модераторы проверяют каждую заявку</div>
     </div>
-    <div class="card" style="text-align:center">
-      <div style="font-size:2rem;margin-bottom:8px">🤖</div>
-      <div style="font-family:var(--font-title);color:var(--primary);margin-bottom:6px">AI-помощник</div>
-      <div style="color:var(--text-muted);font-size:0.9rem">GPT-4 ответит на вопросы о сервере 24/7</div>
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title">AI-помощник</div>
+      <div class="feature-desc">GPT-4 ответит на любые вопросы о сервере 24/7</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Быстрые ответы</div>
+      <div class="feature-desc">Заявки рассматриваются в течение 24 часов</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════ ВСТУПИТЬ ══════════ -->
+<!-- ══════════════ ВСТУПИТЬ ══════════════ -->
 <div id="tab-apply" class="tab">
-  <div class="section-title">🎮 Заявка на вступление</div>
+  <div class="section-title">📋 Заявка на вступление</div>
 
   <div class="card">
+    <p class="text-muted">Заполни форму — модераторы рассмотрят заявку и свяжутся с тобой в Discord.</p>
+
     <div class="form-group">
       <label>Discord @ник *</label>
       <div class="username-wrap">
         <span class="at-sign">@</span>
-        <input type="text" id="apply-username" placeholder="ваш_ник" oninput="debounceCheck('apply')">
+        <input type="text" id="apply-username" placeholder="твой_ник" oninput="debounceCheck('apply')">
       </div>
       <div class="discord-check" id="apply-check"></div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="input-grid-2">
       <div class="form-group">
         <label>Возраст *</label>
         <input type="number" id="apply-age" min="10" max="60" placeholder="18">
       </div>
       <div class="form-group">
-        <label>Ваше имя *</label>
-        <input type="text" id="apply-name" placeholder="Иван или ник">
+        <label>Как тебя зовут? *</label>
+        <input type="text" id="apply-name" placeholder="Иван или игровой ник">
       </div>
     </div>
 
     <div class="form-group">
-      <label>Активность в день *</label>
+      <label>Сколько часов в день ты играешь? *</label>
       <select id="apply-activity">
-        <option value="">Выберите...</option>
-        <option>1-2 часа</option>
-        <option>3-4 часа</option>
-        <option>5-6 часов</option>
+        <option value="">Выбери вариант...</option>
+        <option>Меньше 1 часа</option>
+        <option>1–2 часа в день</option>
+        <option>3–4 часа в день</option>
+        <option>5–6 часов в день</option>
         <option>Больше 6 часов</option>
-        <option>По выходным</option>
+        <option>Только по выходным</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label>В какие игры играете</label>
-      <input type="text" id="apply-games" placeholder="Minecraft, CS2, Valorant... (необязательно)">
+      <label>В какие игры ты играешь?</label>
+      <input type="text" id="apply-games" placeholder="Minecraft, CS2, Valorant, LoL... (необязательно)">
     </div>
 
     <div class="form-group">
-      <label>Принимаете правила сервера? *</label>
+      <label>Откуда ты узнал о сервере? *</label>
+      <select id="apply-source">
+        <option value="">Выбери вариант...</option>
+        <option>Друг пригласил</option>
+        <option>Нашёл в поиске Discord</option>
+        <option>Увидел рекламу</option>
+        <option>Telegram / соцсети</option>
+        <option>Другое</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Что привлекает тебя в нашем сервере? *</label>
+      <textarea id="apply-reason" placeholder="Напиши пару слов: чем тебя заинтересовал GameVerse, что ты хочешь здесь делать..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Принимаешь правила сервера? *</label>
       <select id="apply-rules">
-        <option value="">Выберите...</option>
-        <option value="yes">Да, принимаю</option>
+        <option value="">Выбери...</option>
+        <option value="yes">Да, прочитал и принимаю</option>
         <option value="no">Нет</option>
       </select>
     </div>
@@ -743,166 +1227,46 @@ main { padding: 40px 0 80px; }
   </div>
 </div>
 
-<!-- ══════════ КУРАТОР ══════════ -->
+<!-- ══════════════ КУРАТОР ══════════════ -->
 <div id="tab-curator" class="tab">
   <div class="section-title">👑 Заявка на куратора</div>
 
   <div class="card">
-    <p style="color:var(--text-muted);margin-bottom:20px;font-size:0.95rem">
-      Куратор — помощник администрации сервера. Помогает новым участникам, следит за порядком, организует мероприятия.
+    <p class="text-muted">
+      Куратор — это правая рука администрации. Ты встречаешь новичков, помогаешь с адаптацией, организуешь мероприятия и держишь атмосферу на сервере тёплой.
     </p>
+
+    <div class="role-info-grid">
+      <div class="role-info-card"><div class="ri">🤝</div><div class="rl">Встреча новичков</div></div>
+      <div class="role-info-card"><div class="ri">🎉</div><div class="rl">Ивенты и конкурсы</div></div>
+      <div class="role-info-card"><div class="ri">💬</div><div class="rl">Поддержка участников</div></div>
+      <div class="role-info-card"><div class="ri">📢</div><div class="rl">Анонсы и новости</div></div>
+    </div>
 
     <div class="form-group">
       <label>Discord @ник *</label>
       <div class="username-wrap">
         <span class="at-sign">@</span>
-        <input type="text" id="cur-username" placeholder="ваш_ник" oninput="debounceCheck('cur')">
+        <input type="text" id="cur-username" placeholder="твой_ник" oninput="debounceCheck('cur')">
       </div>
       <div class="discord-check" id="cur-check"></div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div class="input-grid-2">
       <div class="form-group">
         <label>Возраст *</label>
         <input type="number" id="cur-age" min="14" max="60" placeholder="18">
       </div>
       <div class="form-group">
-        <label>Ваше имя *</label>
+        <label>Имя *</label>
         <input type="text" id="cur-name" placeholder="Иван">
       </div>
     </div>
 
     <div class="form-group">
-      <label>Активность в день *</label>
-      <select id="cur-activity">
-        <option value="">Выберите...</option>
-        <option>1-2 часа</option>
-        <option>3-4 часа</option>
-        <option>5-6 часов</option>
-        <option>Больше 6 часов</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label>Игры</label>
-      <input type="text" id="cur-games" placeholder="Необязательно">
-    </div>
-
-    <div class="form-group">
-      <label>Опыт модерации / управления * </label>
-      <textarea id="cur-experience" rows="3" placeholder="Расскажите об опыте администрирования, модерации других серверов, организации сообществ..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Почему хотите стать куратором? *</label>
-      <textarea id="cur-motivation" rows="3" placeholder="Напишите свою мотивацию, чем вы можете помочь серверу..."></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>Принимаете правила сервера? *</label>
-      <select id="cur-rules">
-        <option value="">Выберите...</option>
-        <option value="yes">Да, принимаю</option>
-        <option value="no">Нет</option>
-      </select>
-    </div>
-
-    <button class="btn btn-accent" onclick="submitCurator()" id="cur-btn">
-      👑 Подать заявку на куратора
-    </button>
-    <div class="alert" id="cur-alert"></div>
-  </div>
-</div>
-
-<!-- ══════════ AI ══════════ -->
-<div id="tab-ai" class="tab">
-  <div class="section-title">🤖 AI-помощник</div>
-
-  <div class="card">
-    <p style="color:var(--text-muted);margin-bottom:16px;font-size:0.9rem">
-      Спросите всё о сервере, правилах, командах или просто пообщайтесь. Работает на GPT-4o-mini.
-    </p>
-
-    <div class="chat-window" id="chat-window">
-      <div class="chat-msg bot">
-        <div class="chat-avatar bot">🤖</div>
-        <div class="chat-bubble">
-          Привет! Я AI-помощник GameVerse. Могу рассказать о правилах сервера, как подать заявку, о командах бота и многом другом. Что тебя интересует? 🎮
-        </div>
-      </div>
-    </div>
-
-    <div class="chat-input-row">
-      <input type="text" id="chat-input" placeholder="Напишите сообщение..." maxlength="500"
-        onkeydown="if(event.key==='Enter')sendChat()">
-      <button class="btn btn-primary" onclick="sendChat()" id="chat-send-btn">Отправить</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════ КОМАНДЫ ══════════ -->
-<!-- ══════════ МОДЕРАТОР ══════════ -->
-<div id="tab-moderator" class="tab">
-  <div class="section-title">🛡️ Заявка на модератора</div>
-
-  <div class="card">
-    <p style="color:var(--text-muted);margin-bottom:20px;font-size:0.95rem">
-      Модератор — страж порядка сервера. Следит за соблюдением правил, банит нарушителей, обрабатывает жалобы и помогает участникам.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px">
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:6px">⚖️</div>
-        <div style="font-size:0.85rem;color:var(--text-muted)">Контроль правил</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:6px">🔨</div>
-        <div style="font-size:0.85rem;color:var(--text-muted)">Бан / Кик / Мьют</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:6px">📩</div>
-        <div style="font-size:0.85rem;color:var(--text-muted)">Обработка заявок</div>
-      </div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center">
-        <div style="font-size:1.5rem;margin-bottom:6px">🕐</div>
-        <div style="font-size:0.85rem;color:var(--text-muted)">Онлайн от 2ч/день</div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Discord @ник *</label>
-      <div class="username-wrap">
-        <span class="at-sign">@</span>
-        <input type="text" id="mod-username" placeholder="ваш_ник" oninput="debounceCheck('mod')">
-      </div>
-      <div class="discord-check" id="mod-check"></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-      <div class="form-group">
-        <label>Возраст *</label>
-        <input type="number" id="mod-age" min="14" max="60" placeholder="16">
-      </div>
-      <div class="form-group">
-        <label>Ваше имя *</label>
-        <input type="text" id="mod-name" placeholder="Иван">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Активность в день *</label>
-      <select id="mod-activity">
-        <option value="">Выберите...</option>
-        <option>2-3 часа</option>
-        <option>3-4 часа</option>
-        <option>5-6 часов</option>
-        <option>Больше 6 часов</option>
-      </select>
-    </div>
-
-    <div class="form-group">
       <label>Часовой пояс *</label>
-      <select id="mod-timezone">
-        <option value="">Выберите...</option>
+      <select id="cur-timezone">
+        <option value="">Выбери...</option>
         <option>UTC+2 (Калининград)</option>
         <option>UTC+3 (Москва)</option>
         <option>UTC+4 (Самара)</option>
@@ -917,22 +1281,156 @@ main { padding: 40px 0 80px; }
     </div>
 
     <div class="form-group">
+      <label>Активность в день *</label>
+      <select id="cur-activity">
+        <option value="">Выбери...</option>
+        <option>1–2 часа</option>
+        <option>3–4 часа</option>
+        <option>5–6 часов</option>
+        <option>Больше 6 часов</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Ты уже на сервере? Как давно? *</label>
+      <select id="cur-tenure">
+        <option value="">Выбери...</option>
+        <option>Только пришёл</option>
+        <option>Меньше месяца</option>
+        <option>1–3 месяца</option>
+        <option>3–6 месяцев</option>
+        <option>Больше полугода</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Опыт организации или модерации *</label>
+      <textarea id="cur-experience" rows="3" placeholder="Опишите опыт: администрировали сообщества, организовывали ивенты, вели Telegram-каналы, были HR в других серверах? Расскажи подробнее."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Как ты встретишь нового участника сервера? *</label>
+      <textarea id="cur-welcome" rows="3" placeholder="Опиши конкретно: что ты напишешь, как поможешь освоиться, что покажешь в первую очередь..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Твоя сильная сторона как куратора? *</label>
+      <textarea id="cur-strength" rows="2" placeholder="Коммуникабельность, организаторские навыки, знание игр, умение разрешать конфликты?"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Принимаешь правила и обязанности куратора? *</label>
+      <select id="cur-rules">
+        <option value="">Выбери...</option>
+        <option value="yes">Да, принимаю</option>
+        <option value="no">Нет</option>
+      </select>
+    </div>
+
+    <button class="btn btn-accent" onclick="submitCurator()" id="cur-btn">
+      👑 Подать заявку на куратора
+    </button>
+    <div class="alert" id="cur-alert"></div>
+  </div>
+</div>
+
+<!-- ══════════════ МОДЕРАТОР ══════════════ -->
+<div id="tab-moderator" class="tab">
+  <div class="section-title">🛡️ Заявка на модератора</div>
+
+  <div class="card">
+    <p class="text-muted">
+      Модератор — страж порядка. Ты следишь за соблюдением правил, разбираешь нарушения, обрабатываешь жалобы. Требуется холодная голова и умение принимать взвешенные решения.
+    </p>
+
+    <div class="role-info-grid">
+      <div class="role-info-card"><div class="ri">⚖️</div><div class="rl">Контроль правил</div></div>
+      <div class="role-info-card"><div class="ri">🔨</div><div class="rl">Бан / Кик / Мьют</div></div>
+      <div class="role-info-card"><div class="ri">📩</div><div class="rl">Разбор жалоб</div></div>
+      <div class="role-info-card"><div class="ri">🕐</div><div class="rl">Онлайн от 2ч/день</div></div>
+    </div>
+
+    <div class="form-group">
+      <label>Discord @ник *</label>
+      <div class="username-wrap">
+        <span class="at-sign">@</span>
+        <input type="text" id="mod-username" placeholder="твой_ник" oninput="debounceCheck('mod')">
+      </div>
+      <div class="discord-check" id="mod-check"></div>
+    </div>
+
+    <div class="input-grid-2">
+      <div class="form-group">
+        <label>Возраст *</label>
+        <input type="number" id="mod-age" min="14" max="60" placeholder="16">
+      </div>
+      <div class="form-group">
+        <label>Имя *</label>
+        <input type="text" id="mod-name" placeholder="Иван">
+      </div>
+    </div>
+
+    <div class="input-grid-2">
+      <div class="form-group">
+        <label>Активность в день *</label>
+        <select id="mod-activity">
+          <option value="">Выбери...</option>
+          <option>2–3 часа</option>
+          <option>3–4 часа</option>
+          <option>5–6 часов</option>
+          <option>Больше 6 часов</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Часовой пояс *</label>
+        <select id="mod-timezone">
+          <option value="">Выбери...</option>
+          <option>UTC+2 (Калининград)</option>
+          <option>UTC+3 (Москва)</option>
+          <option>UTC+4 (Самара)</option>
+          <option>UTC+5 (Екатеринбург)</option>
+          <option>UTC+6 (Омск)</option>
+          <option>UTC+7 (Красноярск)</option>
+          <option>UTC+8 (Иркутск)</option>
+          <option>UTC+10 (Владивосток)</option>
+          <option>Другой</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Как давно ты на сервере? *</label>
+      <select id="mod-tenure">
+        <option value="">Выбери...</option>
+        <option>Меньше месяца</option>
+        <option>1–3 месяца</option>
+        <option>3–6 месяцев</option>
+        <option>Больше полугода</option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <label>Опыт модерации *</label>
-      <textarea id="mod-experience" rows="3" placeholder="Модерировали другие серверы/сообщества? Укажите название и роль. Если нет — напишите 'Нет опыта'."></textarea>
+      <textarea id="mod-experience" rows="3" placeholder="Модерировал другие Discord/Telegram серверы? Укажи название и роль. Нет опыта — напиши честно 'Опыта нет, но готов учиться'."></textarea>
     </div>
 
     <div class="form-group">
-      <label>Как бы вы поступили с нарушителем? *</label>
-      <textarea id="mod-situation" rows="3" placeholder="Опишите ваши действия: игрок систематически оскорбляет других участников и игнорирует предупреждения..."></textarea>
+      <label>Ситуация: участник систематически оскорбляет других и игнорирует предупреждения. Твои действия? *</label>
+      <textarea id="mod-situation" rows="3" placeholder="Опиши пошагово: что ты сделаешь сначала, потом, какие инструменты применишь и когда..."></textarea>
     </div>
 
     <div class="form-group">
-      <label>Почему именно вы? *</label>
-      <textarea id="mod-motivation" rows="3" placeholder="Расскажите, почему хотите стать модератором и чем можете быть полезны серверу..."></textarea>
+      <label>Что делать, если у тебя нет уверенности в правильности решения? *</label>
+      <textarea id="mod-doubt" rows="2" placeholder="Опиши, как ты поступишь в спорной ситуации..."></textarea>
     </div>
 
     <div class="form-group">
-      <label>Есть ли у вас Discord Nitro или буст сервера?</label>
+      <label>Почему именно ты? *</label>
+      <textarea id="mod-motivation" rows="3" placeholder="Что отличает тебя от других кандидатов? Какие качества ты принесёшь в команду модераторов?"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Discord Nitro / буст сервера</label>
       <select id="mod-nitro">
         <option value="no">Нет</option>
         <option value="nitro">Есть Nitro</option>
@@ -942,147 +1440,219 @@ main { padding: 40px 0 80px; }
     </div>
 
     <div class="form-group">
-      <label>Принимаете правила и обязанности модератора? *</label>
+      <label>Принимаешь правила и обязанности модератора? *</label>
       <select id="mod-rules">
-        <option value="">Выберите...</option>
-        <option value="yes">Да, принимаю</option>
+        <option value="">Выбери...</option>
+        <option value="yes">Да, принимаю в полной мере</option>
         <option value="no">Нет</option>
       </select>
     </div>
 
-    <button class="btn btn-primary" onclick="submitModerator()" id="mod-btn" style="background:var(--accent);color:#fff;box-shadow:var(--glow-accent)">
+    <button class="btn btn-primary" onclick="submitModerator()" id="mod-btn" style="background:var(--accent);box-shadow:var(--glow-accent)">
       🛡️ Подать заявку на модератора
     </button>
     <div class="alert" id="mod-alert"></div>
   </div>
 </div>
 
+<!-- ══════════════ AI ══════════════ -->
+<div id="tab-ai" class="tab">
+  <div class="section-title">🤖 AI-помощник</div>
+
+  <div class="card">
+    <p class="text-muted">
+      Спроси всё о сервере — правила, команды, как вступить, что делать модераторам. Работает на GPT-4o-mini, доступен 24/7.
+    </p>
+
+    <div class="quick-qs">
+      <button class="quick-q" onclick="setQuickQ('Как подать заявку на вступление?')">Как вступить?</button>
+      <button class="quick-q" onclick="setQuickQ('Какие правила на сервере?')">Правила сервера</button>
+      <button class="quick-q" onclick="setQuickQ('Какие требования к модератору?')">Стать модератором</button>
+      <button class="quick-q" onclick="setQuickQ('Что делает куратор?')">Роль куратора</button>
+      <button class="quick-q" onclick="setQuickQ('Какие команды есть у бота?')">Команды бота</button>
+      <button class="quick-q" onclick="setQuickQ('Как авторизоваться в Telegram?')">Telegram авторизация</button>
+    </div>
+
+    <div class="chat-window" id="chat-window">
+      <div class="chat-msg bot">
+        <div class="chat-avatar bot">🤖</div>
+        <div class="chat-bubble">
+          Привет! Я AI-помощник GameVerse 🎮<br><br>
+          Могу рассказать о правилах, помочь с заявкой, объяснить команды бота или ответить на любой вопрос о сервере. Что тебя интересует?
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Напиши вопрос..." maxlength="500"
+        onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="btn btn-primary" onclick="sendChat()" id="chat-send-btn">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ КОМАНДЫ ══════════════ -->
 <div id="tab-commands" class="tab">
   <div class="section-title">⚔️ Slash-команды Discord</div>
-
   <div class="cmd-grid">
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.05s">
       <div class="cmd-name">/help</div>
-      <div class="cmd-desc">Показать список всех команд с описанием</div>
+      <div class="cmd-desc">Показать все доступные команды с описанием</div>
       <span class="cmd-example">/help</span>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.1s">
       <div class="cmd-name">/ban &lt;user&gt; [reason]</div>
-      <div class="cmd-desc">Забанить пользователя (нужно право BanMembers)</div>
-      <span class="cmd-example">/ban @нарушитель Реклама</span>
+      <div class="cmd-desc">Забанить пользователя (требуется право BanMembers)</div>
+      <span class="cmd-example">/ban @нарушитель Систематический флуд</span>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.15s">
       <div class="cmd-name">/kick &lt;user&gt; [reason]</div>
-      <div class="cmd-desc">Кикнуть пользователя с сервера (нужно KickMembers)</div>
-      <span class="cmd-example">/kick @игрок Нарушение правил</span>
+      <div class="cmd-desc">Кикнуть пользователя с сервера (требуется KickMembers)</div>
+      <span class="cmd-example">/kick @игрок Нарушение правил общения</span>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.2s">
+      <div class="cmd-name">/mute &lt;user&gt; &lt;time&gt; [reason]</div>
+      <div class="cmd-desc">Замьютить пользователя на заданное время (10m, 1h, 1d)</div>
+      <span class="cmd-example">/mute @спам 30m Спам в чате</span>
+    </div>
+    <div class="cmd-card" style="animation-delay:0.25s">
       <div class="cmd-name">/create-role &lt;name&gt; [color]</div>
-      <div class="cmd-desc">Создать роль с HEX-цветом (нужно ManageRoles)</div>
+      <div class="cmd-desc">Создать роль с HEX-цветом (требуется ManageRoles)</div>
       <span class="cmd-example">/create-role VIP #ffd700</span>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.3s">
       <div class="cmd-name">/action &lt;user&gt; give_role &lt;role&gt;</div>
       <div class="cmd-desc">Выдать роль пользователю по названию</div>
       <span class="cmd-example">/action @игрок give_role Участник</span>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.35s">
+      <div class="cmd-name">/warn &lt;user&gt; &lt;reason&gt;</div>
+      <div class="cmd-desc">Выдать предупреждение пользователю с записью в лог</div>
+      <span class="cmd-example">/warn @игрок Оскорбление в чате</span>
+    </div>
+    <div class="cmd-card" style="animation-delay:0.4s">
       <div class="cmd-name">/action &lt;user&gt; send_message &lt;text&gt;</div>
-      <div class="cmd-desc">Отправить личное сообщение пользователю</div>
-      <span class="cmd-example">/action @игрок send_message Привет!</span>
+      <div class="cmd-desc">Отправить личное сообщение пользователю от имени бота</div>
+      <span class="cmd-example">/action @игрок send_message Добро пожаловать!</span>
     </div>
   </div>
 
   <br>
   <div class="section-title">📱 Команды Telegram-бота</div>
   <div class="cmd-grid">
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.1s">
       <div class="cmd-name">/start</div>
-      <div class="cmd-desc">Запустить бота, показать приветствие</div>
+      <div class="cmd-desc">Запустить бота и получить приветственное сообщение</div>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.15s">
       <div class="cmd-name">/auth</div>
-      <div class="cmd-desc">Авторизоваться через Discord (для модераторов)</div>
+      <div class="cmd-desc">Авторизоваться через Discord для доступа к панели модератора</div>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.2s">
       <div class="cmd-name">/whoami</div>
-      <div class="cmd-desc">Показать свой Discord профиль и статус модератора</div>
+      <div class="cmd-desc">Показать привязанный Discord-профиль и статус</div>
     </div>
-    <div class="cmd-card">
+    <div class="cmd-card" style="animation-delay:0.25s">
+      <div class="cmd-name">/queue</div>
+      <div class="cmd-desc">Посмотреть очередь необработанных заявок (только модераторам)</div>
+    </div>
+    <div class="cmd-card" style="animation-delay:0.3s">
       <div class="cmd-name">/help</div>
-      <div class="cmd-desc">Список команд и инструкции</div>
+      <div class="cmd-desc">Справка по командам Telegram-бота</div>
     </div>
   </div>
 </div>
 
-<!-- ══════════ О СЕРВЕРЕ ══════════ -->
+<!-- ══════════════ О СЕРВЕРЕ ══════════════ -->
 <div id="tab-about" class="tab">
   <div class="section-title">ℹ️ О сервере</div>
 
   <div class="card">
     <div class="card-title">🎮 GameVerse Server</div>
-    <p style="color:var(--text-muted);margin-bottom:16px">
-      GameVerse — это игровое сообщество для тех, кто любит играть, общаться и развиваться.
-      Наш сервер работает на Discord с полной системой заявок через сайт и Telegram-модерацией.
+    <p class="text-muted">
+      GameVerse — это живое игровое сообщество, где встречаются люди, объединённые любовью к играм.
+      Мы строим среду без токсичности, с настоящей модерацией и реальными людьми за ней.
     </p>
     <div class="info-block">
-      <strong>Хостинг:</strong> Railway (сайт + Discord бот) + BotHost (Telegram бот)<br>
-      <strong>База данных:</strong> PostgreSQL (Railway)<br>
-      <strong>AI:</strong> GPT-4o-mini (OpenAI)
+      <strong>🖥️ Хостинг:</strong> Railway (сайт + Discord бот) + BotHost (Telegram бот)<br>
+      <strong>🗄️ База данных:</strong> PostgreSQL (Railway)<br>
+      <strong>🤖 AI:</strong> GPT-4o-mini (OpenAI)
     </div>
   </div>
 
   <div class="card">
     <div class="card-title">🛡️ Инструкция для модераторов Telegram</div>
-    <p style="color:var(--text-muted);margin-bottom:16px">
-      Чтобы принимать/отклонять заявки через Telegram, необходимо авторизоваться:
-    </p>
+    <p class="text-muted mb-4">Чтобы принимать заявки через Telegram, необходимо пройти авторизацию:</p>
     <ol class="steps">
-      <li>Найдите Telegram-бота администрации и напишите <strong>/start</strong></li>
-      <li>Введите команду <strong>/auth</strong> — бот пришлёт ссылку для входа</li>
-      <li>Нажмите «Войти через Discord» и авторизуйтесь в браузере</li>
-      <li>Бот проверит вашу роль на Discord-сервере (Модератор/Admin)</li>
-      <li>После подтверждения вы сможете нажимать ✅/❌ на заявках</li>
+      <li>Найди Telegram-бот администрации и напиши <strong>/start</strong></li>
+      <li>Введи команду <strong>/auth</strong> — бот пришлёт ссылку для входа</li>
+      <li>Нажми «Войти через Discord» и авторизуйся в браузере</li>
+      <li>Бот проверит наличие роли Модератор/Admin на Discord-сервере</li>
+      <li>После подтверждения ты сможешь нажимать ✅/❌ на поступающих заявках</li>
     </ol>
     <br>
-    <p style="color:var(--text-muted);font-size:0.85rem">⚠️ Если у вас нет роли Модератора на Discord-сервере — кнопки будут заблокированы.</p>
+    <p style="color:var(--warn);font-size:0.85rem">⚠️ Если у тебя нет роли Модератора на Discord — кнопки будут заблокированы.</p>
   </div>
-
 </div>
 
-</div>
-</div>
-</main>
+</div><!-- /container -->
+</div><!-- /main -->
+
+<!-- Toast container -->
+<div id="toast-container"></div>
 
 <script>
-// ─── Темы ───────────────────────────────────────
+// ─── RIPPLE на кнопках ─────────────────────────
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn');
+  if (!btn) return;
+  const r = document.createElement('span');
+  r.className = 'ripple';
+  const rect = btn.getBoundingClientRect();
+  r.style.cssText = `width:${Math.max(rect.width,rect.height)}px;height:${Math.max(rect.width,rect.height)}px;left:${e.clientX-rect.left-rect.width/2}px;top:${e.clientY-rect.top-rect.height/2}px`;
+  btn.appendChild(r);
+  setTimeout(() => r.remove(), 600);
+});
+
+// ─── ТЕМЫ ──────────────────────────────────────
 function setTheme(t, btn) {
   document.documentElement.setAttribute('data-theme', t);
   document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  localStorage.setItem('theme', t);
+  localStorage.setItem('gv-theme', t);
 }
 (function() {
-  const saved = localStorage.getItem('theme');
+  const saved = localStorage.getItem('gv-theme');
   if (saved) {
     document.documentElement.setAttribute('data-theme', saved);
     const btn = document.querySelector(`.theme-btn[data-t="${saved}"]`);
-    if (btn) {
-      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
+    if (btn) { document.querySelectorAll('.theme-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
   }
 })();
 
-// ─── Вкладки ────────────────────────────────────
+// ─── ВКЛАДКИ ───────────────────────────────────
 function switchTab(id, btn) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
+  // Find correct nav btn
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'"+id+"'")) b.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─── Проверка Discord пользователя ──────────────
+// ─── TOAST ─────────────────────────────────────
+function showToast(type, msg) {
+  const c = document.getElementById('toast-container');
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(40px)'; t.style.transition='all 0.3s'; setTimeout(()=>t.remove(), 300); }, 3500);
+}
+
+// ─── DISCORD CHECK ─────────────────────────────
 const debounceTimers = {};
 function debounceCheck(prefix) {
   clearTimeout(debounceTimers[prefix]);
@@ -1093,161 +1663,160 @@ async function checkDiscordUser(prefix) {
   const input = document.getElementById(prefix + '-username');
   const checkEl = document.getElementById(prefix + '-check');
   const val = input.value.trim();
-
-  if (!val || val.length < 2) {
-    checkEl.className = 'discord-check';
-    return;
-  }
+  if (!val || val.length < 2) { checkEl.className = 'discord-check'; return; }
 
   checkEl.className = 'discord-check loading';
-  checkEl.innerHTML = '🔍 Ищем на сервере...';
+  checkEl.innerHTML = '<span class="shimmer">🔍 Ищем пользователя на сервере...</span>';
   checkEl.style.display = 'block';
 
   try {
     const res = await fetch(`/api/discord/lookup?username=${encodeURIComponent('@' + val.replace('@',''))}`);
     const data = await res.json();
-
     if (data.found) {
-      const rolesHtml = (data.roles || [])
-        .slice(0, 4)
-        .map(r => `<span class="role-badge" style="border-color:${r.color || '#444'}">${r.name}</span>`)
-        .join('');
-
+      const rolesHtml = (data.roles||[]).slice(0,4).map(r=>`<span class="role-badge" style="border-color:${r.color||'#444'}">${r.name}</span>`).join('');
       checkEl.className = 'discord-check found';
       checkEl.innerHTML = `
-        <img class="avatar" src="${data.avatar || ''}" onerror="this.style.display='none'">
-        <div class="user-info">
-          <div class="uname">✅ ${data.username}</div>
-          <div style="font-size:0.8rem;color:var(--text-muted)">${data.displayName}</div>
+        <img class="avatar" src="${data.avatar||''}" onerror="this.style.display='none'">
+        <div class="user-info"><div class="uname">✅ ${data.username}</div>
+          <div style="font-size:0.8rem;color:var(--text-muted)">${data.displayName||''}</div>
           <div class="roles">${rolesHtml}</div>
-        </div>
-      `;
+        </div>`;
       input.dataset.discordId = data.discord_id;
-      input.dataset.discordUsername = data.username;
     } else {
       checkEl.className = 'discord-check not-found';
-      checkEl.innerHTML = `❌ Пользователь @${val} не найден на сервере Discord. Убедитесь, что вы уже на нём.`;
-      checkEl.style.display = 'block';
+      checkEl.innerHTML = `❌ Пользователь @${val} не найден на сервере Discord. Убедись, что ты уже на нём.`;
     }
   } catch {
     checkEl.className = 'discord-check not-found';
-    checkEl.innerHTML = '⚠️ Ошибка проверки. Попробуйте позже.';
-    checkEl.style.display = 'block';
+    checkEl.innerHTML = '⚠️ Ошибка проверки. Попробуй позже.';
   }
 }
 
-// ─── Отправка заявки на вступление ──────────────
+// ─── ALERT helper ──────────────────────────────
+function showAlert(el, type, msg) { el.className = 'alert ' + type; el.innerHTML = msg; }
+
+// ─── ВСТУПЛЕНИЕ ────────────────────────────────
 async function submitApply() {
   const btn = document.getElementById('apply-btn');
   const alert = document.getElementById('apply-alert');
 
   const username = document.getElementById('apply-username').value.trim();
-  const age = document.getElementById('apply-age').value;
-  const name = document.getElementById('apply-name').value.trim();
+  const age      = document.getElementById('apply-age').value;
+  const name     = document.getElementById('apply-name').value.trim();
   const activity = document.getElementById('apply-activity').value;
-  const games = document.getElementById('apply-games').value.trim();
-  const rules = document.getElementById('apply-rules').value;
+  const source   = document.getElementById('apply-source').value;
+  const reason   = document.getElementById('apply-reason').value.trim();
+  const rules    = document.getElementById('apply-rules').value;
+  const games    = document.getElementById('apply-games').value.trim();
 
-  if (!username || !age || !name || !activity || !rules) {
-    showAlert(alert, 'error', '⚠️ Заполните все обязательные поля.');
-    return;
-  }
-  if (rules === 'no') {
-    showAlert(alert, 'error', '❌ Вы должны принять правила сервера.');
-    return;
-  }
+  if (!username||!age||!name||!activity||!source||!reason||!rules) { showAlert(alert,'error','⚠️ Заполни все обязательные поля.'); return; }
+  if (rules==='no') { showAlert(alert,'error','❌ Необходимо принять правила сервера.'); return; }
 
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Отправляем...';
-  showAlert(alert, 'loading', '⏳ Проверяем данные...');
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Отправляем...';
+  showAlert(alert,'loading','⏳ Проверяем данные...');
 
   try {
-    const res = await fetch('/api/applications', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        discord_username: '@' + username.replace('@',''),
-        age: parseInt(age),
-        name, activity, games,
-        rules: rules === 'yes',
-      }),
-    });
+    const res = await fetch('/api/applications',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({discord_username:'@'+username.replace('@',''),age:parseInt(age),name,activity,games,source,reason,rules:true})});
     const data = await res.json();
-
-    if (res.ok && data.success) {
-      showAlert(alert, 'success', '✅ Заявка успешно отправлена! Ожидайте решения модераторов.');
-      document.getElementById('apply-username').value = '';
-      document.getElementById('apply-age').value = '';
-      document.getElementById('apply-name').value = '';
-      document.getElementById('apply-activity').value = '';
-      document.getElementById('apply-games').value = '';
-      document.getElementById('apply-rules').value = '';
-      document.getElementById('apply-check').className = 'discord-check';
-    } else {
-      showAlert(alert, 'error', '❌ ' + (data.error || 'Ошибка сервера'));
-    }
-  } catch {
-    showAlert(alert, 'error', '❌ Ошибка сети. Проверьте соединение.');
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = '📤 Отправить заявку';
-  }
+    if (res.ok&&data.success) {
+      showAlert(alert,'success','✅ Заявка успешно отправлена! Ожидай решения модераторов в Discord.');
+      showToast('success','Заявка на вступление отправлена!');
+      ['apply-username','apply-age','apply-name','apply-games','apply-reason'].forEach(id=>document.getElementById(id).value='');
+      ['apply-activity','apply-source','apply-rules'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('apply-check').className='discord-check';
+    } else { showAlert(alert,'error','❌ '+(data.error||'Ошибка сервера')); }
+  } catch { showAlert(alert,'error','❌ Ошибка сети. Проверь соединение.'); }
+  finally { btn.disabled=false; btn.innerHTML='📤 Отправить заявку'; }
 }
 
-// ─── Отправка заявки куратора ────────────────────
+// ─── КУРАТОР ───────────────────────────────────
 async function submitCurator() {
   const btn = document.getElementById('cur-btn');
   const alert = document.getElementById('cur-alert');
 
-  const username = document.getElementById('cur-username').value.trim();
-  const age = document.getElementById('cur-age').value;
-  const name = document.getElementById('cur-name').value.trim();
-  const activity = document.getElementById('cur-activity').value;
-  const games = document.getElementById('cur-games').value.trim();
-  const experience = document.getElementById('cur-experience').value.trim();
-  const motivation = document.getElementById('cur-motivation').value.trim();
-  const rules = document.getElementById('cur-rules').value;
+  const f = (id) => document.getElementById(id).value.trim ? document.getElementById(id).value.trim() : document.getElementById(id).value;
+  const username   = f('cur-username');
+  const age        = f('cur-age');
+  const name       = f('cur-name');
+  const activity   = f('cur-activity');
+  const timezone   = f('cur-timezone');
+  const tenure     = f('cur-tenure');
+  const experience = f('cur-experience');
+  const welcome    = f('cur-welcome');
+  const strength   = f('cur-strength');
+  const rules      = f('cur-rules');
 
-  if (!username || !age || !name || !activity || !experience || !motivation || !rules) {
-    showAlert(alert, 'error', '⚠️ Заполните все обязательные поля.');
-    return;
+  if (!username||!age||!name||!activity||!timezone||!tenure||!experience||!welcome||!strength||!rules) {
+    showAlert(alert,'error','⚠️ Заполни все обязательные поля.'); return;
   }
-  if (rules === 'no') {
-    showAlert(alert, 'error', '❌ Вы должны принять правила сервера.');
-    return;
-  }
+  if (rules==='no') { showAlert(alert,'error','❌ Необходимо принять правила.'); return; }
 
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Отправляем...';
-  showAlert(alert, 'loading', '⏳ Отправляем заявку...');
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Отправляем...';
+  showAlert(alert,'loading','⏳ Отправляем заявку...');
 
   try {
-    const res = await fetch('/api/curator', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        discord_username: '@' + username.replace('@',''),
-        age: parseInt(age), name, activity, games,
-        experience, motivation, rules: rules === 'yes',
-      }),
-    });
+    const res = await fetch('/api/curator',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({discord_username:'@'+username.replace('@',''),age:parseInt(age),name,activity,timezone,tenure,experience,welcome,strength,rules:true})});
     const data = await res.json();
-
-    if (res.ok && data.success) {
-      showAlert(alert, 'success', '✅ Заявка на куратора отправлена! Администрация рассмотрит её в ближайшее время.');
-    } else {
-      showAlert(alert, 'error', '❌ ' + (data.error || 'Ошибка сервера'));
-    }
-  } catch {
-    showAlert(alert, 'error', '❌ Ошибка сети.');
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = '👑 Подать заявку на куратора';
-  }
+    if (res.ok&&data.success) {
+      showAlert(alert,'success','✅ Заявка на куратора отправлена! Администрация рассмотрит её в ближайшее время.');
+      showToast('success','Заявка на куратора отправлена!');
+    } else { showAlert(alert,'error','❌ '+(data.error||'Ошибка сервера')); }
+  } catch { showAlert(alert,'error','❌ Ошибка сети.'); }
+  finally { btn.disabled=false; btn.innerHTML='👑 Подать заявку на куратора'; }
 }
 
-// ─── AI-чат ─────────────────────────────────────
+// ─── МОДЕРАТОР ─────────────────────────────────
+async function submitModerator() {
+  const btn = document.getElementById('mod-btn');
+  const alert = document.getElementById('mod-alert');
+
+  const g = (id) => document.getElementById(id).value.trim ? document.getElementById(id).value.trim() : document.getElementById(id).value;
+  const username   = g('mod-username');
+  const age        = g('mod-age');
+  const name       = g('mod-name');
+  const activity   = g('mod-activity');
+  const timezone   = g('mod-timezone');
+  const tenure     = g('mod-tenure');
+  const experience = g('mod-experience');
+  const situation  = g('mod-situation');
+  const doubt      = g('mod-doubt');
+  const motivation = g('mod-motivation');
+  const nitro      = g('mod-nitro');
+  const rules      = g('mod-rules');
+
+  if (!username||!age||!name||!activity||!timezone||!tenure||!experience||!situation||!doubt||!motivation||!rules) {
+    showAlert(alert,'error','⚠️ Заполни все обязательные поля.'); return;
+  }
+  if (rules==='no') { showAlert(alert,'error','❌ Необходимо принять правила и обязанности.'); return; }
+
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Отправляем...';
+  showAlert(alert,'loading','⏳ Проверяем данные...');
+
+  try {
+    const res = await fetch('/api/moderator',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({discord_username:'@'+username.replace('@',''),age:parseInt(age),name,activity,timezone,tenure,experience,situation,doubt,motivation,nitro,rules:true})});
+    const data = await res.json();
+    if (res.ok&&data.success) {
+      showAlert(alert,'success','✅ Заявка на модератора отправлена! Администрация рассмотрит её в ближайшее время.');
+      showToast('success','Заявка на модератора отправлена!');
+      ['mod-username','mod-age','mod-name','mod-experience','mod-situation','mod-doubt','mod-motivation'].forEach(id=>document.getElementById(id).value='');
+      ['mod-activity','mod-timezone','mod-tenure','mod-rules'].forEach(id=>document.getElementById(id).value='');
+      document.getElementById('mod-nitro').value='no';
+      document.getElementById('mod-check').className='discord-check';
+    } else { showAlert(alert,'error','❌ '+(data.error||'Ошибка сервера')); }
+  } catch { showAlert(alert,'error','❌ Ошибка сети.'); }
+  finally { btn.disabled=false; btn.innerHTML='🛡️ Подать заявку на модератора'; }
+}
+
+// ─── AI ────────────────────────────────────────
 const chatHistory = [];
+
+function setQuickQ(text) {
+  document.getElementById('chat-input').value = text;
+  document.getElementById('chat-input').focus();
+}
 
 async function sendChat() {
   const input = document.getElementById('chat-input');
@@ -1255,30 +1824,23 @@ async function sendChat() {
   const text = input.value.trim();
   if (!text) return;
 
-  // Добавить сообщение пользователя
   addChatMessage('user', text, '👤');
   chatHistory.push({ role: 'user', content: text });
   input.value = '';
   sendBtn.disabled = true;
 
-  // Показать "печатает..."
   const typingEl = showTyping();
-
   try {
-    const res = await fetch('/api/ai/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chatHistory }),
-    });
+    const res = await fetch('/api/ai/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:chatHistory})});
     const data = await res.json();
     typingEl.remove();
-
     const reply = data.reply || '❌ Нет ответа';
     addChatMessage('bot', reply, '🤖');
-    chatHistory.push({ role: 'assistant', content: reply });
+    chatHistory.push({ role:'assistant', content:reply });
   } catch {
     typingEl.remove();
-    addChatMessage('bot', '❌ Ошибка соединения. Попробуйте позже.', '🤖');
+    addChatMessage('bot', '❌ Ошибка соединения. Попробуй позже.', '🤖');
   } finally {
     sendBtn.disabled = false;
     input.focus();
@@ -1286,99 +1848,46 @@ async function sendChat() {
 }
 
 function addChatMessage(role, text, avatar) {
-  const window = document.getElementById('chat-window');
+  const w = document.getElementById('chat-window');
   const div = document.createElement('div');
   div.className = `chat-msg ${role}`;
   div.innerHTML = `
     <div class="chat-avatar ${role}">${avatar}</div>
-    <div class="chat-bubble">${escapeHtml(text)}</div>
-  `;
-  window.appendChild(div);
-  window.scrollTop = window.scrollHeight;
+    <div class="chat-bubble">${escHtml(text)}</div>`;
+  w.appendChild(div);
+  w.scrollTop = w.scrollHeight;
 }
 
 function showTyping() {
-  const window = document.getElementById('chat-window');
+  const w = document.getElementById('chat-window');
   const div = document.createElement('div');
   div.className = 'chat-msg bot';
-  div.innerHTML = `
-    <div class="chat-avatar bot">🤖</div>
-    <div class="chat-typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-  `;
-  window.appendChild(div);
-  window.scrollTop = window.scrollHeight;
+  div.innerHTML = `<div class="chat-avatar bot">🤖</div><div class="chat-typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+  w.appendChild(div);
+  w.scrollTop = w.scrollHeight;
   return div;
 }
 
-function escapeHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
 }
 
-// ─── Утилиты ────────────────────────────────────
-function showAlert(el, type, msg) {
-  el.className = 'alert ' + type;
-  el.textContent = msg;
-}
-
-// ─── Отправка заявки модератора ──────────────────
-async function submitModerator() {
-  const btn = document.getElementById('mod-btn');
-  const alert = document.getElementById('mod-alert');
-
-  const username   = document.getElementById('mod-username').value.trim();
-  const age        = document.getElementById('mod-age').value;
-  const name       = document.getElementById('mod-name').value.trim();
-  const activity   = document.getElementById('mod-activity').value;
-  const timezone   = document.getElementById('mod-timezone').value;
-  const experience = document.getElementById('mod-experience').value.trim();
-  const situation  = document.getElementById('mod-situation').value.trim();
-  const motivation = document.getElementById('mod-motivation').value.trim();
-  const nitro      = document.getElementById('mod-nitro').value;
-  const rules      = document.getElementById('mod-rules').value;
-
-  if (!username || !age || !name || !activity || !timezone || !experience || !situation || !motivation || !rules) {
-    showAlert(alert, 'error', '⚠️ Заполните все обязательные поля.');
-    return;
-  }
-  if (rules === 'no') {
-    showAlert(alert, 'error', '❌ Вы должны принять правила и обязанности модератора.');
-    return;
-  }
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Отправляем...';
-  showAlert(alert, 'loading', '⏳ Проверяем данные...');
-
-  try {
-    const res = await fetch('/api/moderator', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        discord_username: '@' + username.replace('@',''),
-        age: parseInt(age), name, activity, timezone,
-        experience, situation, motivation, nitro,
-        rules: true,
-      }),
-    });
-    const data = await res.json();
-    if (res.ok && data.success) {
-      showAlert(alert, 'success', '✅ Заявка на модератора отправлена! Администрация рассмотрит её в ближайшее время.');
-      ['mod-username','mod-age','mod-name','mod-experience','mod-situation','mod-motivation']
-        .forEach(id => document.getElementById(id).value = '');
-      ['mod-activity','mod-timezone','mod-nitro','mod-rules']
-        .forEach(id => document.getElementById(id).value = id === 'mod-nitro' ? 'no' : '');
-      document.getElementById('mod-check').className = 'discord-check';
-    } else {
-      showAlert(alert, 'error', '❌ ' + (data.error || 'Ошибка сервера'));
+// ─── STAGGER ANIMATION ────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }, i * 60);
+      observer.unobserve(e.target);
     }
-  } catch {
-    showAlert(alert, 'error', '❌ Ошибка сети. Проверьте соединение.');
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = '🛡️ Подать заявку на модератора';
-  }
-}
+  });
+}, { threshold: 0.1 });
 
+document.querySelectorAll('.cmd-card, .feature-card, .role-info-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+  observer.observe(el);
+});
 </script>
 </body>
 </html>
