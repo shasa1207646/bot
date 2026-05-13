@@ -1050,6 +1050,125 @@ main { padding: 40px 0 100px; }
   .hero-title { font-size: 2rem; }
   .hero-actions { flex-direction: column; align-items: center; }
 }
+
+/* ─── MODERATOR PANEL ─── */
+.app-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+  animation: fadeUp 0.3s both;
+}
+.app-card:hover { border-color: rgba(255,255,255,0.12); }
+.app-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.app-card-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--surface2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.app-card-type {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.type-member   { background: rgba(0,212,255,0.12); color: #00d4ff; border: 1px solid rgba(0,212,255,0.3); }
+.type-moderator{ background: rgba(124,58,237,0.12); color: #a855f7; border: 1px solid rgba(124,58,237,0.3); }
+.type-curator  { background: rgba(255,170,0,0.12); color: #ffaa00; border: 1px solid rgba(255,170,0,0.3); }
+.status-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: auto;
+}
+.status-pending  { background: rgba(255,170,0,0.12); color: #ffaa00; border: 1px solid rgba(255,170,0,0.3); }
+.status-approved { background: rgba(0,255,136,0.12); color: #00ff88; border: 1px solid rgba(0,255,136,0.3); }
+.status-rejected { background: rgba(255,51,85,0.12);  color: #ff3355; border: 1px solid rgba(255,51,85,0.3); }
+.app-card-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.app-field { font-size: 0.85rem; }
+.app-field-label { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+.app-field-value { color: var(--text); word-break: break-word; }
+.app-card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-approve {
+  background: rgba(0,255,136,0.12);
+  color: #00ff88;
+  border: 1px solid rgba(0,255,136,0.4);
+  padding: 7px 16px;
+  font-size: 0.82rem;
+}
+.btn-approve:hover { background: rgba(0,255,136,0.22); }
+.btn-reject {
+  background: rgba(255,51,85,0.1);
+  color: #ff3355;
+  border: 1px solid rgba(255,51,85,0.4);
+  padding: 7px 16px;
+  font-size: 0.82rem;
+}
+.btn-reject:hover { background: rgba(255,51,85,0.2); }
+.btn-delete {
+  background: rgba(255,51,85,0.1);
+  color: #ff3355;
+  border: 1px solid rgba(255,51,85,0.4);
+  padding: 7px 16px;
+  font-size: 0.82rem;
+}
+.btn-delete:hover { background: rgba(255,51,85,0.2); }
+.mute-card, .ban-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.3s both;
+  transition: border-color 0.2s;
+}
+.mute-card:hover, .ban-card:hover { border-color: rgba(255,255,255,0.1); }
+.mute-info, .ban-info { flex: 1; min-width: 200px; }
+.mute-user, .ban-user { font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.mute-meta, .ban-meta { font-size: 0.82rem; color: var(--text-muted); }
+.panel-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.panel-empty .empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.page-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.page-btn:hover { border-color: var(--primary); color: var(--primary); }
+.page-btn.active { background: var(--primary); color: #000; border-color: var(--primary); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -1091,6 +1210,7 @@ main { padding: 40px 0 100px; }
       <li><button class="nav-btn" onclick="switchTab('ai',this)">🤖 AI-помощник</button></li>
       <li><button class="nav-btn" onclick="switchTab('commands',this)">⚔️ Команды</button></li>
       <li><button class="nav-btn" onclick="switchTab('about',this)">ℹ️ О сервере</button></li>
+      <li><button class="nav-btn" data-tab="moderator-tab" onclick="switchTab('modpanel',this)">🔐 Панель</button></li>
     </ul>
   </div>
 </nav>
@@ -1595,6 +1715,99 @@ main { padding: 40px 0 100px; }
   </div>
 </div>
 
+<!-- ══════════════ ПАНЕЛЬ МОДЕРАТОРА ══════════════ -->
+<div id="tab-modpanel" class="tab">
+  <div class="section-title">🔐 Панель модератора</div>
+
+  <!-- Блок авторизации -->
+  <div id="mod-auth-block" class="card" style="text-align:center;padding:48px 28px">
+    <div style="font-size:3rem;margin-bottom:16px">🛡️</div>
+    <h2 style="font-family:var(--font-title);color:var(--primary);margin-bottom:12px">Вход для модераторов</h2>
+    <p class="text-muted" style="max-width:420px;margin:0 auto 28px">
+      Авторизуйтесь через Discord, чтобы получить доступ к панели управления заявками, мутами и банами.
+    </p>
+    <button class="btn btn-primary" onclick="modLogin()" id="mod-login-btn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      Войти через Discord
+    </button>
+    <div id="mod-auth-error" style="margin-top:16px;color:var(--danger);font-size:0.9rem;display:none"></div>
+  </div>
+
+  <!-- Блок "нет прав" -->
+  <div id="mod-noperm-block" class="card" style="text-align:center;padding:48px 28px;display:none">
+    <div style="font-size:3rem;margin-bottom:16px">⛔</div>
+    <h2 style="font-family:var(--font-title);color:var(--danger);margin-bottom:12px">Доступ запрещён</h2>
+    <p class="text-muted" style="max-width:420px;margin:0 auto 20px">
+      Вы вошли как <strong id="mod-noperm-user"></strong>, но у вас нет роли модератора на сервере Discord.
+    </p>
+    <button class="btn btn-outline" onclick="modLogout()">Выйти</button>
+  </div>
+
+  <!-- Панель управления (показывается после авторизации) -->
+  <div id="mod-panel-block" style="display:none">
+
+    <!-- Шапка пользователя -->
+    <div class="card" style="display:flex;align-items:center;gap:16px;padding:18px 24px;margin-bottom:20px">
+      <img id="mod-user-avatar" src="" alt="" style="width:48px;height:48px;border-radius:50%;border:2px solid var(--primary);display:none">
+      <div style="flex:1">
+        <div style="font-family:var(--font-title);color:var(--primary);font-size:1rem">🛡️ Панель модератора</div>
+        <div style="color:var(--text-muted);font-size:0.88rem">Вы вошли как <strong id="mod-user-name" style="color:var(--text)"></strong></div>
+      </div>
+      <button class="btn btn-outline" style="padding:8px 18px;font-size:0.82rem" onclick="modLogout()">Выйти</button>
+    </div>
+
+    <!-- Вкладки панели -->
+    <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+      <button class="btn btn-primary" id="mpanel-tab-apps" onclick="mpanelTab('apps')" style="padding:9px 20px;font-size:0.85rem">📋 Заявки</button>
+      <button class="btn btn-outline" id="mpanel-tab-mutes" onclick="mpanelTab('mutes')" style="padding:9px 20px;font-size:0.85rem">🔇 Муты</button>
+      <button class="btn btn-outline" id="mpanel-tab-bans" onclick="mpanelTab('bans')" style="padding:9px 20px;font-size:0.85rem">🔨 Баны</button>
+    </div>
+
+    <!-- ── ЗАЯВКИ ── -->
+    <div id="mpanel-apps" class="mpanel-section">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center">
+        <select id="apps-filter-status" onchange="loadApplications(1)" style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:8px 14px;font-family:var(--font-body);font-size:0.88rem;outline:none">
+          <option value="all">Все статусы</option>
+          <option value="pending">⏳ Ожидают</option>
+          <option value="approved">✅ Одобрены</option>
+          <option value="rejected">❌ Отклонены</option>
+        </select>
+        <select id="apps-filter-type" onchange="loadApplications(1)" style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:8px 14px;font-family:var(--font-body);font-size:0.88rem;outline:none">
+          <option value="all">Все типы</option>
+          <option value="member">Участник</option>
+          <option value="moderator">Модератор</option>
+          <option value="curator">Куратор</option>
+        </select>
+        <button class="btn btn-outline" onclick="loadApplications(1)" style="padding:8px 16px;font-size:0.82rem">🔄 Обновить</button>
+        <span id="apps-count" style="color:var(--text-muted);font-size:0.85rem;margin-left:auto"></span>
+      </div>
+      <div id="apps-list"></div>
+      <div id="apps-pagination" style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap"></div>
+    </div>
+
+    <!-- ── МУТЫ ── -->
+    <div id="mpanel-mutes" class="mpanel-section" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+        <span id="mutes-count" style="color:var(--text-muted);font-size:0.85rem"></span>
+        <button class="btn btn-outline" onclick="loadMutes(1)" style="padding:8px 16px;font-size:0.82rem">🔄 Обновить</button>
+      </div>
+      <div id="mutes-list"></div>
+      <div id="mutes-pagination" style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap"></div>
+    </div>
+
+    <!-- ── БАНЫ ── -->
+    <div id="mpanel-bans" class="mpanel-section" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+        <span id="bans-count" style="color:var(--text-muted);font-size:0.85rem"></span>
+        <button class="btn btn-outline" onclick="loadBans(1)" style="padding:8px 16px;font-size:0.82rem">🔄 Обновить</button>
+      </div>
+      <div id="bans-list"></div>
+      <div id="bans-pagination" style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap"></div>
+    </div>
+
+  </div><!-- /mod-panel-block -->
+</div>
+
 </div><!-- /container -->
 </div><!-- /main -->
 
@@ -1888,6 +2101,454 @@ document.querySelectorAll('.cmd-card, .feature-card, .role-info-card').forEach(e
   el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
   observer.observe(el);
 });
+
+// ═══════════════════════════════════════════════
+// MODERATOR PANEL
+// ═══════════════════════════════════════════════
+
+let modSession = localStorage.getItem('mod_session') || null;
+let modCurrentTab = 'apps';
+
+// ─── Инициализация при загрузке страницы ──────
+(function initModPanel() {
+  // Проверяем URL-параметры после OAuth callback
+  const params = new URLSearchParams(window.location.search);
+  const sessionFromUrl = params.get('mod_session');
+  const modOk = params.get('mod_ok');
+  const modError = params.get('mod_error');
+
+  if (sessionFromUrl && modOk) {
+    modSession = sessionFromUrl;
+    localStorage.setItem('mod_session', modSession);
+    // Чистим URL
+    window.history.replaceState({}, '', window.location.pathname);
+    // Переключаемся на вкладку панели
+    switchTab('modpanel', document.querySelector('[data-tab="moderator-tab"]'));
+    verifyModSession();
+    return;
+  }
+
+  if (modError) {
+    window.history.replaceState({}, '', window.location.pathname);
+    const errMap = {
+      invalid_request: 'Неверный запрос авторизации.',
+      db_error: 'Ошибка базы данных.',
+      state_expired: 'Ссылка авторизации устарела. Попробуйте снова.',
+      oauth_failed: 'Ошибка OAuth. Попробуйте снова.',
+    };
+    const msg = errMap[modError] || 'Ошибка авторизации.';
+    switchTab('modpanel', document.querySelector('[data-tab="moderator-tab"]'));
+    const errEl = document.getElementById('mod-auth-error');
+    if (errEl) { errEl.textContent = '❌ ' + msg; errEl.style.display = 'block'; }
+    return;
+  }
+
+  // Если есть сохранённая сессия — проверяем её
+  if (modSession) {
+    verifyModSession();
+  }
+})();
+
+// ─── Проверка сессии ──────────────────────────
+async function verifyModSession() {
+  if (!modSession) { showModAuth(); return; }
+  try {
+    const res = await fetch('/api/moderator/verify', {
+      headers: { 'x-mod-session': modSession }
+    });
+    const data = await res.json();
+
+    if (!data.authorized) {
+      modSession = null;
+      localStorage.removeItem('mod_session');
+      showModAuth();
+      return;
+    }
+
+    if (!data.is_moderator) {
+      showModNoPerm(data.discord_username);
+      return;
+    }
+
+    showModPanel(data);
+  } catch {
+    showModAuth();
+  }
+}
+
+// ─── Показать блок авторизации ────────────────
+function showModAuth() {
+  document.getElementById('mod-auth-block').style.display = '';
+  document.getElementById('mod-noperm-block').style.display = 'none';
+  document.getElementById('mod-panel-block').style.display = 'none';
+}
+
+// ─── Показать блок "нет прав" ─────────────────
+function showModNoPerm(username) {
+  document.getElementById('mod-auth-block').style.display = 'none';
+  document.getElementById('mod-noperm-block').style.display = '';
+  document.getElementById('mod-panel-block').style.display = 'none';
+  document.getElementById('mod-noperm-user').textContent = '@' + username;
+}
+
+// ─── Показать панель управления ───────────────
+function showModPanel(data) {
+  document.getElementById('mod-auth-block').style.display = 'none';
+  document.getElementById('mod-noperm-block').style.display = 'none';
+  document.getElementById('mod-panel-block').style.display = '';
+
+  document.getElementById('mod-user-name').textContent = '@' + data.discord_username;
+  const avatarEl = document.getElementById('mod-user-avatar');
+  if (data.discord_avatar) {
+    avatarEl.src = data.discord_avatar;
+    avatarEl.style.display = '';
+  }
+
+  // Загружаем данные активной вкладки
+  mpanelTab(modCurrentTab);
+}
+
+// ─── Вход через Discord ───────────────────────
+async function modLogin() {
+  const btn = document.getElementById('mod-login-btn');
+  const errEl = document.getElementById('mod-auth-error');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Подключаемся...';
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/moderator/auth/discord', { method: 'POST' });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Нет URL');
+    }
+  } catch (e) {
+    errEl.textContent = '❌ Ошибка: ' + (e.message || 'Попробуйте позже');
+    errEl.style.display = 'block';
+    btn.disabled = false;
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.055a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg> Войти через Discord';
+  }
+}
+
+// ─── Выход ────────────────────────────────────
+async function modLogout() {
+  if (modSession) {
+    try {
+      await fetch('/api/moderator/logout', {
+        method: 'POST',
+        headers: { 'x-mod-session': modSession, 'Content-Type': 'application/json' }
+      });
+    } catch {}
+    modSession = null;
+    localStorage.removeItem('mod_session');
+  }
+  showModAuth();
+  showToast('success', 'Вы вышли из панели модератора');
+}
+
+// ─── Переключение вкладок панели ──────────────
+function mpanelTab(tab) {
+  modCurrentTab = tab;
+  ['apps','mutes','bans'].forEach(t => {
+    const section = document.getElementById('mpanel-' + t);
+    const btn = document.getElementById('mpanel-tab-' + t);
+    if (section) section.style.display = t === tab ? '' : 'none';
+    if (btn) {
+      btn.className = t === tab
+        ? 'btn btn-primary'
+        : 'btn btn-outline';
+      btn.style.padding = '9px 20px';
+      btn.style.fontSize = '0.85rem';
+    }
+  });
+
+  if (tab === 'apps')  loadApplications(1);
+  if (tab === 'mutes') loadMutes(1);
+  if (tab === 'bans')  loadBans(1);
+}
+
+// ─── Загрузка заявок ──────────────────────────
+async function loadApplications(page) {
+  const status = document.getElementById('apps-filter-status')?.value || 'all';
+  const type   = document.getElementById('apps-filter-type')?.value || 'all';
+  const list   = document.getElementById('apps-list');
+  const pag    = document.getElementById('apps-pagination');
+  const count  = document.getElementById('apps-count');
+
+  list.innerHTML = '<div class="panel-empty"><div class="empty-icon">⏳</div>Загрузка...</div>';
+  pag.innerHTML = '';
+
+  try {
+    const res = await fetch(
+      `/api/moderator/applications?page=${page}&status=${status}&type=${type}&limit=15`,
+      { headers: { 'x-mod-session': modSession } }
+    );
+
+    if (res.status === 401 || res.status === 403) {
+      modSession = null; localStorage.removeItem('mod_session');
+      showModAuth(); return;
+    }
+
+    const data = await res.json();
+    count.textContent = `Всего: ${data.total}`;
+
+    if (!data.applications || data.applications.length === 0) {
+      list.innerHTML = '<div class="panel-empty"><div class="empty-icon">📭</div>Заявок не найдено</div>';
+      return;
+    }
+
+    list.innerHTML = data.applications.map(app => renderAppCard(app)).join('');
+    renderPagination(pag, data.page, data.pages, (p) => loadApplications(p));
+  } catch {
+    list.innerHTML = '<div class="panel-empty"><div class="empty-icon">❌</div>Ошибка загрузки</div>';
+  }
+}
+
+function renderAppCard(app) {
+  const typeLabels = { member: 'Участник', moderator: 'Модератор', curator: 'Куратор' };
+  const statusLabels = { pending: '⏳ Ожидает', approved: '✅ Одобрена', rejected: '❌ Отклонена' };
+  const typeClass = 'type-' + (app.type || 'member');
+  const statusClass = 'status-' + (app.status || 'pending');
+  const date = app.created_at ? new Date(app.created_at).toLocaleString('ru-RU', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
+
+  const actions = app.status === 'pending' ? `
+    <button class="btn btn-approve" onclick="approveApp(${app.id}, this)">✅ Одобрить</button>
+    <button class="btn btn-reject"  onclick="rejectApp(${app.id}, this)">❌ Отклонить</button>
+  ` : `<span style="color:var(--text-muted);font-size:0.82rem">Решение: ${escHtml(app.decided_by || '—')}</span>`;
+
+  return `<div class="app-card" id="app-card-${app.id}">
+    <div class="app-card-header">
+      <span class="app-card-id">#${app.id}</span>
+      <span class="app-card-type ${typeClass}">${typeLabels[app.type] || app.type}</span>
+      <span style="color:var(--text);font-weight:700">${escHtml(app.username || '—')}</span>
+      <span class="status-badge ${statusClass}">${statusLabels[app.status] || app.status}</span>
+    </div>
+    <div class="app-card-body">
+      <div class="app-field"><div class="app-field-label">Имя</div><div class="app-field-value">${escHtml(app.name || '—')}</div></div>
+      <div class="app-field"><div class="app-field-label">Возраст</div><div class="app-field-value">${app.age || '—'}</div></div>
+      <div class="app-field"><div class="app-field-label">Активность</div><div class="app-field-value">${escHtml(app.activity || '—')}</div></div>
+      <div class="app-field"><div class="app-field-label">Дата</div><div class="app-field-value">${date}</div></div>
+      ${app.motivation ? `<div class="app-field" style="grid-column:1/-1"><div class="app-field-label">Мотивация</div><div class="app-field-value">${escHtml(app.motivation)}</div></div>` : ''}
+    </div>
+    <div class="app-card-actions">${actions}</div>
+  </div>`;
+}
+
+// ─── Одобрить заявку ──────────────────────────
+async function approveApp(id, btn) {
+  if (!confirm('Одобрить заявку #' + id + '?')) return;
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    const res = await fetch(`/api/moderator/application/${id}/approve`, {
+      method: 'POST',
+      headers: { 'x-mod-session': modSession, 'Content-Type': 'application/json' }
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      showToast('success', '✅ Заявка #' + id + ' одобрена');
+      loadApplications(1);
+    } else {
+      showToast('error', '❌ ' + (data.error || 'Ошибка'));
+      btn.disabled = false; btn.textContent = '✅ Одобрить';
+    }
+  } catch {
+    showToast('error', '❌ Ошибка сети');
+    btn.disabled = false; btn.textContent = '✅ Одобрить';
+  }
+}
+
+// ─── Отклонить заявку ─────────────────────────
+async function rejectApp(id, btn) {
+  const reason = prompt('Причина отклонения (необязательно):') ?? null;
+  if (reason === null) return; // отмена
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    const res = await fetch(`/api/moderator/application/${id}/reject`, {
+      method: 'POST',
+      headers: { 'x-mod-session': modSession, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reason })
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      showToast('success', '❌ Заявка #' + id + ' отклонена');
+      loadApplications(1);
+    } else {
+      showToast('error', '❌ ' + (data.error || 'Ошибка'));
+      btn.disabled = false; btn.textContent = '❌ Отклонить';
+    }
+  } catch {
+    showToast('error', '❌ Ошибка сети');
+    btn.disabled = false; btn.textContent = '❌ Отклонить';
+  }
+}
+
+// ─── Загрузка мутов ───────────────────────────
+async function loadMutes(page) {
+  const list  = document.getElementById('mutes-list');
+  const pag   = document.getElementById('mutes-pagination');
+  const count = document.getElementById('mutes-count');
+
+  list.innerHTML = '<div class="panel-empty"><div class="empty-icon">⏳</div>Загрузка...</div>';
+  pag.innerHTML = '';
+
+  try {
+    const res = await fetch(`/api/moderator/mutes?page=${page}&limit=15`, {
+      headers: { 'x-mod-session': modSession }
+    });
+
+    if (res.status === 401 || res.status === 403) {
+      modSession = null; localStorage.removeItem('mod_session');
+      showModAuth(); return;
+    }
+
+    const data = await res.json();
+    count.textContent = `Всего мутов: ${data.total}`;
+
+    if (!data.mutes || data.mutes.length === 0) {
+      list.innerHTML = '<div class="panel-empty"><div class="empty-icon">🔇</div>Мутов нет</div>';
+      return;
+    }
+
+    list.innerHTML = data.mutes.map(m => {
+      const date = m.muted_at ? new Date(m.muted_at).toLocaleString('ru-RU', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
+      const expires = m.expires_at ? new Date(m.expires_at).toLocaleString('ru-RU', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : 'Бессрочно';
+      return `<div class="mute-card" id="mute-card-${m.id}">
+        <div class="mute-info">
+          <div class="mute-user">🔇 ${escHtml(m.username || m.user_id)}</div>
+          <div class="mute-meta">
+            ID: ${escHtml(m.user_id)} &nbsp;·&nbsp;
+            Причина: ${escHtml(m.reason || '—')} &nbsp;·&nbsp;
+            Выдан: ${date} &nbsp;·&nbsp;
+            Истекает: ${expires}
+            ${m.muted_by ? ` &nbsp;·&nbsp; Модератор: ${escHtml(m.muted_by)}` : ''}
+          </div>
+        </div>
+        <button class="btn btn-delete" onclick="deleteMute(${m.id}, this)">🗑️ Снять</button>
+      </div>`;
+    }).join('');
+
+    renderPagination(pag, data.page, data.pages, (p) => loadMutes(p));
+  } catch {
+    list.innerHTML = '<div class="panel-empty"><div class="empty-icon">❌</div>Ошибка загрузки</div>';
+  }
+}
+
+// ─── Удалить мут ──────────────────────────────
+async function deleteMute(id, btn) {
+  if (!confirm('Снять мут #' + id + '?')) return;
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    const res = await fetch(`/api/moderator/mute/${id}`, {
+      method: 'DELETE',
+      headers: { 'x-mod-session': modSession }
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      showToast('success', '✅ Мут снят');
+      loadMutes(1);
+    } else {
+      showToast('error', '❌ ' + (data.error || 'Ошибка'));
+      btn.disabled = false; btn.textContent = '🗑️ Снять';
+    }
+  } catch {
+    showToast('error', '❌ Ошибка сети');
+    btn.disabled = false; btn.textContent = '🗑️ Снять';
+  }
+}
+
+// ─── Загрузка банов ───────────────────────────
+async function loadBans(page) {
+  const list  = document.getElementById('bans-list');
+  const pag   = document.getElementById('bans-pagination');
+  const count = document.getElementById('bans-count');
+
+  list.innerHTML = '<div class="panel-empty"><div class="empty-icon">⏳</div>Загрузка...</div>';
+  pag.innerHTML = '';
+
+  try {
+    const res = await fetch(`/api/moderator/bans?page=${page}&limit=15`, {
+      headers: { 'x-mod-session': modSession }
+    });
+
+    if (res.status === 401 || res.status === 403) {
+      modSession = null; localStorage.removeItem('mod_session');
+      showModAuth(); return;
+    }
+
+    const data = await res.json();
+    count.textContent = `Всего банов: ${data.total}`;
+
+    if (!data.bans || data.bans.length === 0) {
+      list.innerHTML = '<div class="panel-empty"><div class="empty-icon">🔨</div>Банов нет</div>';
+      return;
+    }
+
+    list.innerHTML = data.bans.map(b => {
+      const date = b.banned_at ? new Date(b.banned_at).toLocaleString('ru-RU', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }) : '—';
+      return `<div class="ban-card" id="ban-card-${b.id}">
+        <div class="ban-info">
+          <div class="ban-user">🔨 ${escHtml(b.username || b.user_id)}</div>
+          <div class="ban-meta">
+            ID: ${escHtml(b.user_id)} &nbsp;·&nbsp;
+            Причина: ${escHtml(b.reason || '—')} &nbsp;·&nbsp;
+            Дата: ${date}
+            ${b.banned_by ? ` &nbsp;·&nbsp; Модератор: ${escHtml(b.banned_by)}` : ''}
+          </div>
+        </div>
+        <button class="btn btn-delete" onclick="deleteBan(${b.id}, this)">🗑️ Разбанить</button>
+      </div>`;
+    }).join('');
+
+    renderPagination(pag, data.page, data.pages, (p) => loadBans(p));
+  } catch {
+    list.innerHTML = '<div class="panel-empty"><div class="empty-icon">❌</div>Ошибка загрузки</div>';
+  }
+}
+
+// ─── Удалить бан ──────────────────────────────
+async function deleteBan(id, btn) {
+  if (!confirm('Разбанить пользователя (бан #' + id + ')?')) return;
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    const res = await fetch(`/api/moderator/ban/${id}`, {
+      method: 'DELETE',
+      headers: { 'x-mod-session': modSession }
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      showToast('success', '✅ Бан снят');
+      loadBans(1);
+    } else {
+      showToast('error', '❌ ' + (data.error || 'Ошибка'));
+      btn.disabled = false; btn.textContent = '🗑️ Разбанить';
+    }
+  } catch {
+    showToast('error', '❌ Ошибка сети');
+    btn.disabled = false; btn.textContent = '🗑️ Разбанить';
+  }
+}
+
+// ─── Пагинация ────────────────────────────────
+function renderPagination(container, currentPage, totalPages, onPage) {
+  if (totalPages <= 1) return;
+  let html = '';
+  const start = Math.max(1, currentPage - 2);
+  const end   = Math.min(totalPages, currentPage + 2);
+
+  if (start > 1) html += `<button class="page-btn" onclick="(${onPage.toString()})(1)">1</button>`;
+  if (start > 2) html += `<span style="color:var(--text-muted);padding:0 4px">…</span>`;
+
+  for (let p = start; p <= end; p++) {
+    html += `<button class="page-btn${p === currentPage ? ' active' : ''}" onclick="(${onPage.toString()})(${p})">${p}</button>`;
+  }
+
+  if (end < totalPages - 1) html += `<span style="color:var(--text-muted);padding:0 4px">…</span>`;
+  if (end < totalPages) html += `<button class="page-btn" onclick="(${onPage.toString()})(${totalPages})">${totalPages}</button>`;
+
+  container.innerHTML = html;
+}
 </script>
 </body>
 </html>
