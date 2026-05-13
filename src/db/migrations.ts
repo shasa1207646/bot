@@ -39,6 +39,37 @@ export async function runMigrations() {
         telegram_user_id  BIGINT,
         created_at        TIMESTAMP DEFAULT NOW()
       );
+
+      CREATE TABLE IF NOT EXISTS mutes (
+        id          SERIAL PRIMARY KEY,
+        user_id     VARCHAR(30) NOT NULL,
+        username    VARCHAR(100),
+        reason      TEXT,
+        muted_at    TIMESTAMP DEFAULT NOW(),
+        muted_by    VARCHAR(100),
+        expires_at  TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS bans (
+        id          SERIAL PRIMARY KEY,
+        user_id     VARCHAR(30) NOT NULL,
+        username    VARCHAR(100),
+        reason      TEXT,
+        banned_at   TIMESTAMP DEFAULT NOW(),
+        banned_by   VARCHAR(100)
+      );
+
+      CREATE TABLE IF NOT EXISTS web_mod_sessions (
+        id            VARCHAR(64) PRIMARY KEY,
+        discord_id    VARCHAR(30) NOT NULL,
+        discord_username VARCHAR(100),
+        discord_avatar   VARCHAR(300),
+        is_moderator  BOOLEAN DEFAULT false,
+        created_at    TIMESTAMP DEFAULT NOW(),
+        expires_at    TIMESTAMP
+      );
+
+      ALTER TABLE applications ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'pending';
     `);
     console.log('[DB] Migrations completed');
   } catch (err) {
