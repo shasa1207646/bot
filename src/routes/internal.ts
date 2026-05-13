@@ -59,6 +59,24 @@ router.post('/internal/decision', async (req, res) => {
   }
 });
 
+// GET /api/internal/pending-applications — список заявок в ожидании для Telegram бота
+router.get('/internal/pending-applications', async (req, res) => {
+  const secret = req.headers['x-internal-secret'];
+  if (secret !== process.env.INTERNAL_SECRET) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  try {
+    const result = await pool.query(
+      `SELECT * FROM applications WHERE status = 'pending' AND type IN ('member','moderator','curator') ORDER BY created_at ASC`
+    );
+    res.json({ applications: result.rows, count: result.rows.length });
+  } catch (err: any) {
+    console.error('[Internal] Ошибка получения заявок:', err);
+    res.status(500).json({ error: 'Внутренняя ошибка' });
+  }
+});
+
 // POST /api/ai/chat
 router.post('/ai/chat', async (req, res) => {
   const { messages } = req.body;
