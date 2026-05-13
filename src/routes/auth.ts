@@ -139,6 +139,36 @@ router.get('/auth/discord/callback', async (req, res) => {
         .catch(e => console.warn('[Auth] BotHost session notify failed:', e?.message));
     }
 
+    // Если пользователь — модератор, отправить ему список активных заявок через BotHost
+    if (isModerator && process.env.BOTHOST_WEBHOOK_URL) {
+      try {
+        const pendingRes = await pool.query(
+          `SELECT * FROM applications WHERE status = 'pending' AND type IN ('member','moderator','curator') ORDER BY created_at ASC`
+        );
+        const pendingApps = pendingRes.rows;
+
+        const bothostApps = process.env.BOTHOST_WEBHOOK_URL.replace('/bot/application', '/bot/send-applications');
+        await axios.post(bothostApps, {
+          action: 'send_applications',
+          telegram_user_id: telegramUserId,
+          applications: pendingApps,
+        }, {
+          headers: { 'x-internal-secret': process.env.INTERNAL_SECRET || '' },
+          timeout: 8000,
+        });
+        console.log(`[Auth] Отправлено ${pendingApps.length} заявок модератору tg:${telegramUserId}`);
+      } catch (e: any) {
+        console.warn('[Auth] Не удалось отправить заявки в BotHost:', e?.message);
+      }
+    }
+
+    // Перенаправить пользователя обратно в Telegram
+    const tgBotUsername = process.env.TELEGRAM_BOT_USERNAME;
+    if (tgBotUsername) {
+      return res.redirect(`https://t.me/${tgBotUsername}`);
+    }
+
+    // Запасная страница, если TELEGRAM_BOT_USERNAME не задан
     const icon = isModerator ? '✅' : '⚠️';
     const statusMsg = isModerator
       ? `Вы вошли как <strong>@${discordUser.username}</strong>.<br>🛡️ Статус модератора подтверждён.`
