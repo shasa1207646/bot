@@ -1,5 +1,5 @@
 {
-  "name": "discord-bot-site",
+  "name": "petushara-team-bot",
   "version": "1.0.0",
   "scripts": {
     "build": "npx esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --external:pg-native --external:bufferutil --external:utf-8-validate",
