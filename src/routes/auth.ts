@@ -68,16 +68,52 @@ router.get('/auth/discord/callback', async (req, res) => {
     let roles: string[] = [];
     let isModerator = false;
 
+    // ИСПРАВЛЕНИЕ 1: все названия ролей модератора — в нижнем регистре для корректного сравнения
+    const modRoles = [
+      '《модератор》',
+      'администрация сервера',
+      'зам.главы',
+      'тех-админ',
+      'mod',
+      'owner',
+      'staff',
+      'модератор',
+      'администратор',
+      'admin',
+    ];
+
     try {
       const { discordClient } = await import('../bot/bot');
+
+      // ИСПРАВЛЕНИЕ 2: ждём готовности бота до 5 секунд, не пропускаем молча
+      if (!discordClient.isReady()) {
+        console.warn('[Auth] Discord бот не готов, ждём...');
+        await new Promise<void>((resolve) => {
+          const timeout = setTimeout(resolve, 5000);
+          discordClient.once('ready', () => { clearTimeout(timeout); resolve(); });
+        });
+      }
+
       if (discordClient.isReady()) {
         const guild = await discordClient.guilds.fetch(process.env.DISCORD_GUILD_ID!);
-        const member = await guild.members.fetch(discordUser.id);
-        roles = member.roles.cache.filter(r => r.name !== '@everyone').map(r => r.name);
-        const modRoles = ['《Модератор》','Администрация сервера','Зам.главы','Тех-Админ','mod','owner','staff'];
-        isModerator = roles.some(r => modRoles.some(mr => r.toLowerCase().includes(mr)));
+        // ИСПРАВЛЕНИЕ 3: принудительно обновляем участника, а не берём из кэша
+        const member = await guild.members.fetch({ user: discordUser.id, force: true });
+        roles = member.roles.cache
+          .filter(r => r.name !== '@everyone')
+          .map(r => r.name);
+
+        // ИСПРАВЛЕНИЕ 4: сравниваем обе стороны в нижнем регистре
+        isModerator = roles.some(roleName =>
+          modRoles.some(mr => roleName.toLowerCase().includes(mr))
+        );
+
+        console.log(`[Auth] Пользователь ${discordUser.username}, роли: [${roles.join(', ')}], модератор: ${isModerator}`);
+      } else {
+        console.error('[Auth] Discord бот так и не стал готов, роли не проверены');
       }
-    } catch (e) { console.warn('[Auth] роли:', e); }
+    } catch (e) {
+      console.warn('[Auth] Ошибка получения ролей:', e);
+    }
 
     const expiresAt = new Date(Date.now() + 7*24*60*60*1000);
     await pool.query(
@@ -112,8 +148,10 @@ router.get('/auth/discord/callback', async (req, res) => {
 <style>body{font-family:sans-serif;background:#0a0a0f;color:#e2e8f0;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
 .card{background:#12121a;border:1px solid #2a2a3a;border-radius:16px;padding:2.5rem 2rem;text-align:center;max-width:420px;width:90%}
 h2{color:${isModerator?'#00ff88':'#ffaa00'};margin-bottom:1rem}p{color:#8892a0;line-height:1.6}strong{color:#e2e8f0}
-.hint{margin-top:1.5rem;font-size:.85rem;color:#555}</style></head>
+.hint{margin-top:1.5rem;font-size:.85rem;color:#555}
+.roles{margin-top:1rem;font-size:.8rem;color:#666;word-break:break-word}</style></head>
 <body><div class="card"><h2>${icon} Авторизация завершена</h2><p>${statusMsg}</p>
+${roles.length > 0 ? `<p class="roles">Роли на сервере: ${roles.join(', ')}</p>` : ''}
 <p class="hint">Можете закрыть это окно и вернуться в Telegram.</p></div></body></html>`);
 
   } catch (err: any) {
