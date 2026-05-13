@@ -74,8 +74,7 @@ router.get('/auth/discord/callback', async (req, res) => {
         const guild = await discordClient.guilds.fetch(process.env.DISCORD_GUILD_ID!);
         const member = await guild.members.fetch(discordUser.id);
         roles = member.roles.cache.filter(r => r.name !== '@everyone').map(r => r.name);
-        const modRoles = ['модератор','admin','администратор','куратор','mod','owner','staff'];
-        isModerator = roles.some(r => modRoles.some(mr => r.toLowerCase().includes(mr)));
+        isModerator = roles.some(r => r === 'Модератор');
       }
     } catch (e) { console.warn('[Auth] роли:', e); }
 
