@@ -1,4 +1,4 @@
-# 🎮 GameVerse — Discord + Telegram Bot + Website
+# 🎮 PETUSHARA TEAM — Discord + Telegram Bot + Website
 
 Полноценный проект: сайт с заявками, Discord-бот, Telegram-бот для администрации.
 
