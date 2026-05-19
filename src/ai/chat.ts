@@ -1,12 +1,12 @@
-import OpenAI from 'openai';
+import Replicate from 'replicate';
 
-let openai: OpenAI | null = null;
+let replicate: Replicate | null = null;
 
-function getClient(): OpenAI {
-  if (!openai) {
-    openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+function getClient(): Replicate {
+  if (!replicate) {
+    replicate = new Replicate({ auth: process.env.REPLICATE_API_TOKEN });
   }
-  return openai;
+  return replicate;
 }
 
 const SYSTEM_PROMPT = `Ты дружелюбный AI-помощник игрового Discord-сервера.
@@ -21,22 +21,32 @@ export interface Message {
 }
 
 export async function getAIResponse(messages: Message[]): Promise<string> {
-  if (!process.env.OPENAI_API_KEY) {
-    return '🤖 AI-помощник временно недоступен. Проверьте настройки OPENAI_API_KEY.';
+  if (!process.env.REPLICATE_API_TOKEN) {
+    return '🤖 AI-помощник временно недоступен. Проверьте настройки REPLICATE_API_TOKEN.';
   }
+
+  // Build a single prompt string from the conversation history
+  const history = messages
+    .map((m) => (m.role === 'user' ? `User: ${m.content}` : `Assistant: ${m.content}`))
+    .join('\n');
+
+  const prompt = `${SYSTEM_PROMPT}\n\n${history}\nAssistant:`;
 
   try {
     const client = getClient();
-    const response = await client.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...messages,
-      ],
-      max_tokens: 500,
-      temperature: 0.7,
+    const output = await client.run('intel/neural-chat-7b', {
+      input: {
+        prompt,
+        max_new_tokens: 500,
+        temperature: 0.7,
+        top_p: 0.9,
+        repetition_penalty: 1.1,
+      },
     });
-    return response.choices[0]?.message?.content || 'Нет ответа';
+
+    // Replicate streams output as an array of string tokens
+    const text = Array.isArray(output) ? (output as string[]).join('') : String(output ?? '');
+    return text.trim() || 'Нет ответа';
   } catch (err: any) {
     console.error('[AI] Ошибка:', err?.message);
     return '❌ Ошибка AI. Попробуйте позже.';
