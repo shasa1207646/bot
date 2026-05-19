@@ -7,9 +7,34 @@ import { sendApplicationToTelegram } from '../telegram/sender';
 const router = Router();
 
 router.post('/curator', async (req, res) => {
-  const { discord_username, age, name, activity, games, rules, experience, motivation } = req.body;
+  const {
+    discord_username,
+    age,
+    name,
+    activity,
+    games,
+    rules,
+    experience,
+    motivation,
+  } = req.body;
 
-  if (!discord_username || !age || !name || !activity || !experience || !motivation || rules === undefined) {
+  const trimmed = {
+    discord_username: typeof discord_username === 'string' ? discord_username.trim() : discord_username,
+    name: typeof name === 'string' ? name.trim() : name,
+    activity: typeof activity === 'string' ? activity.trim() : activity,
+    experience: typeof experience === 'string' ? experience.trim() : experience,
+    motivation: typeof motivation === 'string' ? motivation.trim() : motivation,
+  };
+
+  if (
+    !trimmed.discord_username || trimmed.discord_username === '' ||
+    !age || age === '' ||
+    !trimmed.name || trimmed.name === '' ||
+    !trimmed.activity || trimmed.activity === '' ||
+    !trimmed.experience || trimmed.experience === '' ||
+    !trimmed.motivation || trimmed.motivation === '' ||
+    rules === undefined || rules === null || rules === ''
+  ) {
     return res.status(400).json({ error: 'Заполните все обязательные поля.' });
   }
 
@@ -19,12 +44,14 @@ router.post('/curator', async (req, res) => {
 
   let discordData: any = { found: false };
   if (discordClient.isReady()) {
-    discordData = await lookupDiscordUser(discordClient, discord_username);
+    discordData = await lookupDiscordUser(discordClient, trimmed.discord_username);
   }
 
   if (!discordData.found) {
-    return res.status(404).json({ error: `Пользователь ${discord_username} не найден на сервере Discord.` });
+    return res.status(404).json({ error: `Пользователь ${trimmed.discord_username} не найден на сервере Discord.` });
   }
+
+  const trimmedGames = typeof games === 'string' ? games.trim() || null : games || null;
 
   const result = await pool.query(
     `INSERT INTO applications (type, discord_id, username, age, name, activity, games, rules, experience, motivation)
@@ -33,12 +60,12 @@ router.post('/curator', async (req, res) => {
       discordData.discord_id,
       discordData.username,
       parseInt(age),
-      name,
-      activity,
-      games || null,
+      trimmed.name,
+      trimmed.activity,
+      trimmedGames,
       true,
-      experience,
-      motivation,
+      trimmed.experience,
+      trimmed.motivation,
     ]
   );
 
@@ -50,12 +77,12 @@ router.post('/curator', async (req, res) => {
     discord_id: discordData.discord_id,
     username: discordData.username,
     age: parseInt(age),
-    name,
-    activity,
-    games: games || null,
+    name: trimmed.name,
+    activity: trimmed.activity,
+    games: trimmedGames,
     rules: true,
-    experience,
-    motivation,
+    experience: trimmed.experience,
+    motivation: trimmed.motivation,
     discord_avatar: discordData.avatar,
     discord_roles: discordData.roles?.map((r: any) => r.name) || [],
     submitted_at: new Date().toISOString(),
