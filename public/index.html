@@ -1429,6 +1429,11 @@ main { padding: 40px 0 100px; }
     </div>
 
     <div class="form-group">
+      <label>Почему ты хочешь стать куратором? *</label>
+      <textarea id="cur-motivation" rows="3" placeholder="Почему вы хотите быть куратором? Что мотивирует вас помогать участникам сервера?"></textarea>
+    </div>
+
+    <div class="form-group">
       <label>Как ты встретишь нового участника сервера? *</label>
       <textarea id="cur-welcome" rows="3" placeholder="Опиши конкретно: что ты напишешь, как поможешь освоиться, что покажешь в первую очередь..."></textarea>
     </div>
@@ -1956,11 +1961,12 @@ async function submitCurator() {
   const timezone   = f('cur-timezone');
   const tenure     = f('cur-tenure');
   const experience = f('cur-experience');
+  const motivation = f('cur-motivation');
   const welcome    = f('cur-welcome');
   const strength   = f('cur-strength');
   const rules      = f('cur-rules');
 
-  if (!username||!age||!name||!activity||!timezone||!tenure||!experience||!welcome||!strength||!rules) {
+  if (!username||!age||!name||!activity||!timezone||!tenure||!experience||!motivation||!welcome||!strength||!rules) {
     showAlert(alert,'error','⚠️ Заполни все обязательные поля.'); return;
   }
   if (rules==='no') { showAlert(alert,'error','❌ Необходимо принять правила.'); return; }
@@ -1970,7 +1976,7 @@ async function submitCurator() {
 
   try {
     const res = await fetch('/api/curator',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({discord_username:'@'+username.replace('@',''),age:parseInt(age),name,activity,timezone,tenure,experience,welcome,strength,rules:true})});
+      body:JSON.stringify({discord_username:'@'+username.replace('@',''),age:parseInt(age),name,activity,timezone,tenure,experience,motivation,welcome,strength,rules:true})});
     const data = await res.json();
     if (res.ok&&data.success) {
       showAlert(alert,'success','✅ Заявка на куратора отправлена! Администрация рассмотрит её в ближайшее время.');
