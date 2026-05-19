@@ -7,6 +7,8 @@ import { sendApplicationToTelegram } from '../telegram/sender';
 const router = Router();
 
 router.post('/curator', async (req, res) => {
+  console.log('[Curator] Received body:', req.body);
+
   const {
     discord_username,
     age,
@@ -26,15 +28,19 @@ router.post('/curator', async (req, res) => {
     motivation: typeof motivation === 'string' ? motivation.trim() : motivation,
   };
 
-  if (
-    !trimmed.discord_username || trimmed.discord_username === '' ||
-    !age || age === '' ||
-    !trimmed.name || trimmed.name === '' ||
-    !trimmed.activity || trimmed.activity === '' ||
-    !trimmed.experience || trimmed.experience === '' ||
-    !trimmed.motivation || trimmed.motivation === '' ||
-    rules === undefined || rules === null || rules === ''
-  ) {
+  console.log('[Curator] Trimmed values:', trimmed);
+
+  const missingFields: string[] = [];
+  if (!trimmed.discord_username || trimmed.discord_username === '') missingFields.push('discord_username');
+  if (!age || age === '') missingFields.push('age');
+  if (!trimmed.name || trimmed.name === '') missingFields.push('name');
+  if (!trimmed.activity || trimmed.activity === '') missingFields.push('activity');
+  if (!trimmed.experience || trimmed.experience === '') missingFields.push('experience');
+  if (!trimmed.motivation || trimmed.motivation === '') missingFields.push('motivation');
+  if (rules === undefined || rules === null || rules === '') missingFields.push('rules');
+
+  if (missingFields.length > 0) {
+    console.log('[Curator] Validation failed — missing or empty fields:', missingFields);
     return res.status(400).json({ error: 'Заполните все обязательные поля.' });
   }
 
