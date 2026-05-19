@@ -115,16 +115,8 @@ router.get('/auth/discord/callback', async (req, res) => {
       console.warn('[Auth] Ошибка получения ролей:', e);
     }
 
-    const expiresAt = new Date(Date.now() + 7*24*60*60*1000);
-    await pool.query(
-      `INSERT INTO moderator_sessions
-         (telegram_user_id,discord_user_id,discord_username,discord_roles,is_moderator,authorized_at,expires_at)
-       VALUES($1,$2,$3,$4,$5,NOW(),$6)
-       ON CONFLICT(telegram_user_id) DO UPDATE SET
-         discord_user_id=$2,discord_username=$3,discord_roles=$4,
-         is_moderator=$5,authorized_at=NOW(),expires_at=$6`,
-      [telegramUserId, discordUser.id, '@'+discordUser.username, roles, isModerator, expiresAt]
-    );
+    // moderator_sessions table has been dropped; Telegram-linked auth state is
+    // communicated to BotHost via the webhook below and does not need local storage.
 
     // Уведомить BotHost об обновлении сессии
     const bothostSession = process.env.BOTHOST_WEBHOOK_URL?.replace('/bot/application','/bot/session');
