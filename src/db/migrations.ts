@@ -3,6 +3,12 @@ import pool from './pool';
 export async function runMigrations() {
   const client = await pool.connect();
   try {
+    // Drop the legacy moderator_sessions table — it is no longer used by any
+    // code path and its NOT NULL PRIMARY KEY on telegram_user_id causes
+    // constraint violations when the web OAuth flow stores a NULL telegram_user_id
+    // in oauth_states and the callback attempts to insert into this table.
+    await client.query(`DROP TABLE IF EXISTS moderator_sessions CASCADE;`);
+
     await client.query(`
       CREATE TABLE IF NOT EXISTS applications (
         id              SERIAL PRIMARY KEY,
@@ -21,17 +27,6 @@ export async function runMigrations() {
         tg_message_id   BIGINT,
         tg_chat_id      BIGINT,
         created_at      TIMESTAMP DEFAULT NOW()
-      );
-
-      CREATE TABLE IF NOT EXISTS moderator_sessions (
-        telegram_user_id  BIGINT PRIMARY KEY,
-        telegram_username VARCHAR(100),
-        discord_user_id   VARCHAR(30),
-        discord_username  VARCHAR(100),
-        discord_roles     TEXT[],
-        is_moderator      BOOLEAN DEFAULT false,
-        authorized_at     TIMESTAMP DEFAULT NOW(),
-        expires_at        TIMESTAMP
       );
 
       CREATE TABLE IF NOT EXISTS oauth_states (
@@ -60,13 +55,13 @@ export async function runMigrations() {
       );
 
       CREATE TABLE IF NOT EXISTS web_mod_sessions (
-        id            VARCHAR(64) PRIMARY KEY,
-        discord_id    VARCHAR(30) NOT NULL,
+        id               VARCHAR(64) PRIMARY KEY,
+        discord_id       VARCHAR(30) NOT NULL,
         discord_username VARCHAR(100),
         discord_avatar   VARCHAR(300),
-        is_moderator  BOOLEAN DEFAULT false,
-        created_at    TIMESTAMP DEFAULT NOW(),
-        expires_at    TIMESTAMP
+        is_moderator     BOOLEAN DEFAULT false,
+        created_at       TIMESTAMP DEFAULT NOW(),
+        expires_at       TIMESTAMP
       );
 
       ALTER TABLE applications ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'pending';
